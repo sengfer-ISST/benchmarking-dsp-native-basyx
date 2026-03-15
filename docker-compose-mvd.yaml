@@ -216,7 +216,7 @@
         mqtt-broker:
           condition: service_started   # configured to connect on startup
         keycloak:
-          condition: service_healthy
+          condition: service_started
       ports:
         - 8090:8090
         - 5005:5005
