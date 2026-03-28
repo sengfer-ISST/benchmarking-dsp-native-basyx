@@ -1,0 +1,20 @@
+meta {
+  name: Get Shells
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:8090/shells
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{basyx_admin_token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

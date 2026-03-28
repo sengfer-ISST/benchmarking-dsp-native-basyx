@@ -1,0 +1,48 @@
+meta {
+  name: New AAS
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8090/shells
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{basyx_admin_token}}
+}
+
+body:json {
+  {
+    "modelType": "AssetAdministrationShell",
+    "assetInformation": {
+      "assetKind": "Instance",
+      "assetType": "Car",
+      "defaultThumbnail": {
+        "contentType": "",
+        "path": ""
+      },
+      "globalAssetId": "urn:uuid:580d3adf-1981-44a0-a214-13d6ceed9379"
+    },
+    "submodels": [
+      {
+        "keys": [
+          {
+            "type": "Submodel",
+            "value": "fe6229e6-abcd-4c6e-809b-db59e70f7c6e"
+          }
+        ],
+        "type": "ExternalReference"
+      }
+    ],
+    "id": "e38a0f92-4ee8-436c-a535-0f9cdad4c3c8",
+    "idShort": "Car"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

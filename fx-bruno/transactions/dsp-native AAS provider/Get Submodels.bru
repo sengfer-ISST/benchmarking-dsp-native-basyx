@@ -1,0 +1,20 @@
+meta {
+  name: Get Submodels
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:8090/submodels
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{basyx_admin_token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

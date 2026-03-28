@@ -3,7 +3,9 @@
     "blackList": [],
     "default": {
       "credentialSubject": {
-        "isMember": true
+        "membership": {
+          "membershipType": "FullMember"
+        }
       }
     }
   }
