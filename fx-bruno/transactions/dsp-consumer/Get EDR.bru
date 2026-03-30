@@ -15,8 +15,11 @@ headers {
 }
 
 script:post-response {
-  const authToken = res.getBody().authorization; 
-  bru.setEnvVar("pullSecret", authToken);
+  const response = res.getBody()
+  const endpoint = response["endpoint"]
+  const auth = response["authorization"]
+  bru.setVar("asset-endpoint", endpoint)
+  bru.setVar("asset-auth-token", "Bearer " + auth)
 }
 
 settings {

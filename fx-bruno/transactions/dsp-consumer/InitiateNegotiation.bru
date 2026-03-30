@@ -17,11 +17,10 @@ headers {
 body:json {
   {
     "@context": {
-      "@vocab": "https://w3id.org/edc/v0.0.1/ns/",
-      "odrl": "http://www.w3.org/ns/odrl/2/"
+      "@vocab": "https://w3id.org/edc/v0.0.1/ns/"
     },
     "@type": "ContractRequest",
-    "counterPartyAddress": "http://provider-controlplane:9020/dsp",
+    "counterPartyAddress": "http://dsp-native-basyx:8090/dsp",
     "connectorId": "did:web:provider-idhub:user:provider",
     "protocol": "dataspace-protocol-http",
     "policy": {
@@ -30,7 +29,7 @@ body:json {
       "@type": "Offer",
       "assigner": "did:web:provider-idhub:user:provider",
       "assignee": "did:web:consumer-idhub:user:consumer",
-      "target": "assetId"
+      "target": "{{target-asset}}"
     }
   }
 }

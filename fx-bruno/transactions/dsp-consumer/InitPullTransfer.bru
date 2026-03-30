@@ -17,8 +17,9 @@ body:json {
       },
       "@type": "TransferRequestDto",
       "protocol": "dataspace-protocol-http",
+      "assetId": "{{target-asset}}",
       "contractId": "{{contractId}}",
-      "counterPartyAddress": "http://provider-controlplane:9020/dsp",
+      "counterPartyAddress": "http://dsp-native-basyx:8090/dsp",
       "connectorId": "did:web:provider-idhub:user:provider",
       "transferType": "HttpData-PULL"
   }

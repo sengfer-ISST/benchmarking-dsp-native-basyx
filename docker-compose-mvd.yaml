@@ -168,7 +168,8 @@ services:
 
   dsp-native-basyx:
     container_name: dsp-native-basyx
-    image: ghcr.io/factory-x-contributions/dsp-native-basyx:0.0.3
+    image: dsp-native-basyx:patched-edDSA
+    pull_policy: never
     environment:
       # ── BaSyx RBAC ─────────────────────────────────────────────
       - basyx.feature.authorization.rbac.file=file:/app/resources/rules.json

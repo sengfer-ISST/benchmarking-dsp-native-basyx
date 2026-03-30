@@ -1,0 +1,24 @@
+meta {
+  name: PullAssetData
+  type: http
+  seq: 6
+}
+
+get {
+  url: http://localhost:8090/dsp/data-access/ShellsApiAsset
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaWQ6d2ViOnByb3ZpZGVyLWlkaHViOnVzZXI6cHJvdmlkZXIvYXBpQXNzZXRXcml0ZUFjY2Vzc0lzc3VlciIsImV4cCI6MTc3NDcyMTExMiwiaWF0IjoxNzc0NzIwODEyLCJhcGlBc3NldElkIjoiU2hlbGxzQXBpQXNzZXQiLCJjaWQiOiIzM2JlZGQxOS00Y2M2LTRmYzEtOGE3ZC00NzYzNmJjZmNmNzIifQ.cnr22ZcZS8cblRNrzmuXzUoJmPejjY6RqHTJRUd-KYk
+}
+
+body:json {
+  {}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
