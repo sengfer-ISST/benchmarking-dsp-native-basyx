@@ -5,13 +5,17 @@ meta {
 }
 
 get {
-  url: http://localhost:8090/dsp/data-access/ShellsApiAsset
+  url: http://localhost:8090/dsp/data-access/e38a0f92-4ee8-436c-a535-0f9cdad4c3c8
   body: none
-  auth: none
+  auth: bearer
 }
 
 headers {
-  Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaWQ6d2ViOnByb3ZpZGVyLWlkaHViOnVzZXI6cHJvdmlkZXIvYXBpQXNzZXRXcml0ZUFjY2Vzc0lzc3VlciIsImV4cCI6MTc3NDcyMTExMiwiaWF0IjoxNzc0NzIwODEyLCJhcGlBc3NldElkIjoiU2hlbGxzQXBpQXNzZXQiLCJjaWQiOiIzM2JlZGQxOS00Y2M2LTRmYzEtOGE3ZC00NzYzNmJjZmNmNzIifQ.cnr22ZcZS8cblRNrzmuXzUoJmPejjY6RqHTJRUd-KYk
+  ~Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaWQ6d2ViOnByb3ZpZGVyLWlkaHViOnVzZXI6cHJvdmlkZXIvc2luZ2xlQXNzZXRSZWFkT25seURhdGFBY2Nlc3NJc3N1ZXIiLCJleHAiOjE3NzQ5NjA3OTIsImlhdCI6MTc3NDk2MDQ5MiwiZGFkIjoiaHR0cDovL2RzcC1uYXRpdmUtYmFzeXg6ODA5MC9kc3AvZGF0YS1hY2Nlc3MvZTM4YTBmOTItNGVlOC00MzZjLWE1MzUtMGY5Y2RhZDRjM2M4IiwiY2lkIjoiMGMyYmIwMmEtOTBjYi00NWZmLTk0OTUtZDU4OTUxMGRhOTdhIn0.nl4aVyVrC-CzKuV7eLv7j03qsrfApYu4vDfmH99Ie9c
+}
+
+auth:bearer {
+  token: {{asset-auth-token}}
 }
 
 body:json {
@@ -21,4 +25,74 @@ body:json {
 settings {
   encodeUrl: true
   timeout: 0
+}
+
+example {
+  name: reponse
+  
+  request: {
+    url: http://localhost:8090/dsp/data-access/e38a0f92-4ee8-436c-a535-0f9cdad4c3c8
+    method: GET
+    mode: none
+    headers: {
+      ~Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaWQ6d2ViOnByb3ZpZGVyLWlkaHViOnVzZXI6cHJvdmlkZXIvc2luZ2xlQXNzZXRSZWFkT25seURhdGFBY2Nlc3NJc3N1ZXIiLCJleHAiOjE3NzQ5NjA3OTIsImlhdCI6MTc3NDk2MDQ5MiwiZGFkIjoiaHR0cDovL2RzcC1uYXRpdmUtYmFzeXg6ODA5MC9kc3AvZGF0YS1hY2Nlc3MvZTM4YTBmOTItNGVlOC00MzZjLWE1MzUtMGY5Y2RhZDRjM2M4IiwiY2lkIjoiMGMyYmIwMmEtOTBjYi00NWZmLTk0OTUtZDU4OTUxMGRhOTdhIn0.nl4aVyVrC-CzKuV7eLv7j03qsrfApYu4vDfmH99Ie9c
+    }
+  
+    body:json: {
+      {}
+    }
+  }
+  
+  response: {
+    headers: {
+      aas_middleware: BaSyx
+      x-content-type-options: nosniff
+      x-xss-protection: 0
+      cache-control: no-cache, no-store, max-age=0, must-revalidate
+      pragma: no-cache
+      expires: 0
+      x-frame-options: DENY
+      content-type: application/json
+      content-length: 393
+      date: Tue, 31 Mar 2026 12:38:49 GMT
+      keep-alive: timeout=60
+      connection: keep-alive
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "modelType": "AssetAdministrationShell",
+          "assetInformation": {
+            "assetKind": "Instance",
+            "assetType": "Car",
+            "defaultThumbnail": {
+              "contentType": "",
+              "path": ""
+            },
+            "globalAssetId": "urn:uuid:580d3adf-1981-44a0-a214-13d6ceed9379"
+          },
+          "submodels": [
+            {
+              "keys": [
+                {
+                  "type": "Submodel",
+                  "value": "fe6229e6-abcd-4c6e-809b-db59e70f7c6e"
+                }
+              ],
+              "type": "ExternalReference"
+            }
+          ],
+          "id": "e38a0f92-4ee8-436c-a535-0f9cdad4c3c8",
+          "idShort": "Car"
+        }
+      '''
+    }
+  }
 }

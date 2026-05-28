@@ -1,0 +1,21 @@
+# Prometheus scrape config for the local-fx-mvd monitoring overlay.
+#
+# Scrapes node-exporter (host metrics) + the OTel collector (which re-exposes
+# EDC application metrics: HTTP server latency/throughput + JVM).
+
+global:
+  # 5 s keeps per-container curves fine-grained enough to see negotiation /
+  # transfer spikes during Bruno + k6 runs without drowning Prometheus on a
+  # laptop. Revisit if we add many more targets.
+  scrape_interval: 5s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: node-exporter
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  # EDC application metrics, re-exported by the collector in Prometheus format.
+  - job_name: otel-collector
+    static_configs:
+      - targets: ['otel-collector:8889']

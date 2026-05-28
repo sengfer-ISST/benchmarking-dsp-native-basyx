@@ -24,8 +24,8 @@ body:json {
 script:post-response {
   const dcat = res.getBody()["dcat:dataset"];
   
-  const assetId = dcat[0]["@id"];
-  const offerId = dcat[0]['odrl:hasPolicy'][0]['@id'];
+  const assetId = dcat[2]["@id"];
+  const offerId = dcat[2]['odrl:hasPolicy'][0]['@id'];
   
   bru.setEnvVar("target-asset", assetId);
   bru.setEnvVar("offerId", offerId);
