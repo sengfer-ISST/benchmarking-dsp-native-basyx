@@ -1,15 +1,3 @@
-# MVD stack WITH monitoring (node-exporter + OTel collector + Tempo +
-# Prometheus + Grafana). Standalone superset of docker-compose-mvd.yaml.
-# Bring it up on its own:
-#   docker compose -f docker-compose.monitoring.yaml up -d
-#
-# Use docker-compose-mvd.yaml when you don't want monitoring overhead.
-#
-# Stack: node-exporter (host metrics) + the OTel collector + Tempo (per-API
-# latency/throughput, JVM, distributed traces) + Prometheus (storage) +
-# Grafana (visualisation, with provisioned datasources & dashboards).
-# See monitoring/README.md.
-#
 # One-time setup: download the OTel java-agent jar before first `up`:
 #   curl -L -o additional_config/opentelemetry-javaagent.jar \
 #     https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/download/v2.8.0/opentelemetry-javaagent.jar
@@ -376,8 +364,6 @@ services:
 
   # ─────────────────────────────────────────────────────────────────────────
   # Monitoring overlay (Prometheus + Grafana + Tempo + OTel + node-exporter).
-  # See monitoring/README.md for what each service does and how the metrics
-  # schema lines up with benchmarking-factoryx-edc & benchmarking-EDC.
   # ─────────────────────────────────────────────────────────────────────────
 
   # Receives OTLP from the EDC + dsp-native-basyx java-agents, re-exports

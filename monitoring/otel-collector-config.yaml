@@ -1,9 +1,3 @@
-# OpenTelemetry Collector config for the local-fx-mvd monitoring overlay.
-#
-# Receives OTLP from the EDC java-agents (Stage 2.1) and fans the signals out:
-#   - metrics -> Prometheus exporter on :8889 (scraped by our Prometheus)
-#   - traces  -> OTLP/gRPC to Tempo (Stage 2.3)
-#
 # The collector is the single sink the agents push to; Prometheus then pulls
 # from the collector. This pull/push split is why metrics need a 5 s agent
 # export interval (opentelemetry.properties) AND a 5 s Prometheus scrape.
