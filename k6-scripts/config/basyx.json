@@ -1,0 +1,44 @@
+{
+  "name": "basyx",
+  "serviceNamespace": "dsp-native-basyx-mvd",
+
+  "consumerManagementUrl": "http://localhost:29010/management",
+  "providerManagementUrl": null,
+  "dataPlanePublicUrl": "http://localhost:8090",
+
+  "providerDspAddress": "http://dsp-native-basyx:8090/dsp",
+  "providerId": "did:web:provider-idhub:user:provider",
+  "consumerId": "did:web:consumer-idhub:user:consumer",
+  "protocol": "dataspace-protocol-http",
+  "transferType": "HttpData-PULL",
+
+  "auth": { "headerName": null, "headerValue": null },
+
+  "seed": { "enabled": false },
+
+  "catalog": { "assetIdSelector": "ShellsApiAsset" },
+
+  "edr": { "useEdrEndpoint": true },
+
+  "payload": {
+    "urlTemplate": null,
+    "note": "BaSyx has no separate data plane (the AAS repo IS the data plane, synchronous GET) -> payload-sweep is not applicable; transfer/EDR half is degenerate (methodology Gk.RQ4)."
+  },
+
+  "prometheus": { "baseUrl": "http://localhost:9090" },
+
+  "services": {
+    "sut": ["dsp-native-basyx", "consumer-controlplane"],
+    "provider": ["dsp-native-basyx"],
+    "consumer": ["consumer-controlplane"]
+  },
+
+  "_notes": {
+    "connector": "DSP-Native BaSyx. ON arm = org.factoryx.library.validationservice=mvd, driven by an EDC consumer-controlplane (docker-compose.monitoring.yaml).",
+    "networking": "bridge network 'dsp-native-basyx'. providerDspAddress is a CONTAINER hostname because the EDC consumer (inside the network) dials it; consumerManagementUrl is a HOST-mapped port (29010) because k6 runs on the host.",
+    "provider_id": "org.factoryx.library.id = did:web:provider-idhub:user:provider (becomes client_id in STS + aud check).",
+    "no_management_api": "BaSyx provider has no EDC Management API -> seed.enabled=false; data is pre-seeded in MongoDB. seedProvider()/seedAssets() are no-ops, so catalog-sweep (Gk.RQ5) and payload-sweep are EDC-only.",
+    "TBD_verify_at_smoke": "Phase B3: confirm (1) catalog.assetIdSelector matches a real pre-seeded asset @id (live probe showed ShellsApiAsset / SubmodelsApiAsset); (2) the EDR endpoint is host-reachable — if BaSyx returns a container address, set edr.useEdrEndpoint=false and a concrete dataPlanePublicUrl path.",
+    "off_arm": "Phase B3: the mock arm drops the EDC consumer, so this consumerManagementUrl path serves the ON (mvd) arm only; the OFF (mock) arm needs the raw-DSP mock-token driver."
+  }
+}
