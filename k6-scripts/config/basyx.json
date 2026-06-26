@@ -34,6 +34,17 @@
     "pullRewriteTo": "http://localhost:8090",
     "pollIntervalMs": 250,
     "pollTimeoutMs": 15000,
+    "seed": {
+      "_doc": "Self-seed the pinned shell DataAsset in k6 setup() (basyx-off/seed.js). The shell id == assetIdSelector above, so the driver targets exactly what is seeded. Idempotent (201/409). Mongo has no persistent volume, so this makes runs restart-proof.",
+      "enabled": true,
+      "keycloakTokenUrl": "http://localhost:8080/realms/dsp-native-basyx/protocol/openid-connect/token",
+      "keycloakClientId": "dsp-native-basyx-client",
+      "keycloakUsername": "the.admin",
+      "keycloakPassword": "adminPassword",
+      "shellsUrl": "http://localhost:8090/shells",
+      "globalAssetId": "urn:uuid:580d3adf-1981-44a0-a214-13d6ceed9379",
+      "idShort": "Car"
+    },
     "_live_verify": {
       "audience": "must start with the provider's own DSP url = http://{org.factoryx.library.hostname}:8090/dsp -> dsp-native-basyx. Confirm against MockValidationService.getOwnDspUrl at smoke.",
       "providerDspBase": "k6 posts here from the host; 8090 is published, so localhost:8090 works. Token AUDIENCE stays the container url (above) — request target and token claim are different things.",

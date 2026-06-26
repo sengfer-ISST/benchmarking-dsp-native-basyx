@@ -127,6 +127,11 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongoAdmin
       MONGO_INITDB_ROOT_PASSWORD: mongoPassword
+    volumes:
+      # Persist AAS data across restarts so the seeded shell survives. The k6 OFF
+      # arm also self-seeds in setup() (basyx-off/seed.js), so this is belt-and-
+      # braces; `docker compose down -v` still wipes it (then setup() re-seeds).
+      - mongo-data:/data/db
     restart: always
     healthcheck:
       test: mongo
@@ -269,6 +274,7 @@ services:
 
 volumes:
   keycloak_data:
+  mongo-data:
   prometheus-data:
   grafana-data:
   tempo-data:

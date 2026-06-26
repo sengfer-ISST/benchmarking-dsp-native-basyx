@@ -14,6 +14,7 @@
 
 import { check } from 'k6';
 import { runDspFlow } from './dsp-flow.js';
+import { seedShell } from './seed.js';
 
 export const options = {
   vus: 1,
@@ -22,6 +23,13 @@ export const options = {
     checks: ['rate==1.0'], // every step must pass for the smoke to be a valid gate
   },
 };
+
+// Self-seed the pinned shell so the pull has a target (Mongo isn't persistent).
+export function setup() {
+  const r = seedShell();
+  console.log('seed: ' + JSON.stringify(r));
+  return r;
+}
 
 export default function () {
   const r = runDspFlow();

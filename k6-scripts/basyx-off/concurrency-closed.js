@@ -8,6 +8,7 @@
 import { baseOptions } from '../lib/options.js';
 import { buildSummary } from '../lib/metrics.js';
 import { runDspFlow } from './dsp-flow.js';
+import { seedShell } from './seed.js';
 
 const STAGE = __ENV.STAGE_DURATION || '2m';
 
@@ -32,5 +33,7 @@ export const options = Object.assign({}, baseOptions, {
   },
 });
 
+// Self-seed the pinned shell once per test (Mongo isn't persistent).
+export function setup() { return seedShell(); }
 export default function () { runDspFlow(); }
 export const handleSummary = buildSummary;
