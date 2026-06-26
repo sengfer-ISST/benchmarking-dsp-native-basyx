@@ -1,0 +1,279 @@
+# IDENTITY OFF (G2) parity deployment for dsp-native-basyx.
+#
+# Counterpart to docker-compose.monitoring.yaml (which is the identity-ON / MVD
+# stack + monitoring). The ONLY varied factor is the dsp-protocol-lib validation
+# service: this file runs the provider with
+#       org.factoryx.library.validationservice=mock   (MockValidationService)
+# instead of `mvd` (MvdValidationService). MockValidationService performs NO
+# cryptographic checks — it parses a plain JSON token {clientId, audience},
+# verifies the audience targets this provider, and injects credentials=
+# "dataspacemember" (which maps to the trusted_business_partner RBAC role). The
+# RBAC authorization layer and the policy service (empty in both arms) are thus
+# held constant; only DCP token verification is removed.
+#
+# Because the whole DCP identity stack is the thing under test, the identity
+# infrastructure is dropped: local-issuer-service, consumer/provider-idhub,
+# shared-postgres, shared-vault, vault-init, and the EDC consumer-controlplane.
+#
+# CONSUMER DRIVER NOTE: MockValidationService expects a plain-JSON bearer token,
+# so the EDC DCP consumer-controlplane (which emits a signed JWT) is wire-
+# incompatible with this arm and is intentionally absent. Drive this arm with a
+# raw-DSP consumer (k6/Bruno) that posts directly to http://localhost:8090/dsp
+# with Authorization: Bearer {"clientId":"<consumer>","audience":"http://dsp-native-basyx:8090/dsp"}.
+# This consumer-side asymmetry vs the MVD arm is inherent to BaSyx being non-EDC
+# and is a disclosed construct-validity limitation; the G1-G2 delta is read
+# primarily within BaSyx (provider-side identity overhead).
+#
+# Run:  docker compose -f docker-compose-mock.monitoring.yaml up
+
+services:
+  dsp-native-basyx:
+    container_name: dsp-native-basyx
+    image: dsp-native-basyx:patched-edDSA
+    pull_policy: never
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+    environment:
+      # ── OTel java-agent (zero-code instrumentation of Spring Boot / Tomcat) ─
+      - JAVA_TOOL_OPTIONS=-Xms512m -Xmx768m -javaagent:/app/opentelemetry-javaagent.jar -Dotel.javaagent.configuration-file=/app/opentelemetry.properties
+      - OTEL_SERVICE_NAME=dsp-native-basyx
+      # namespace suffixed -mock so its series are distinguishable from the MVD arm in Grafana
+      - OTEL_RESOURCE_ATTRIBUTES=service.namespace=dsp-native-basyx-mock,service.instance.id=dsp-native-basyx
+      # ── BaSyx RBAC (unchanged vs MVD arm — held constant) ──────
+      - basyx.feature.authorization.rbac.file=file:/app/resources/rules.json
+      - spring.security.oauth2.resourceserver.jwt.issuer-uri=http://keycloak:8080/realms/dsp-native-basyx
+      # ── MongoDB ────────────────────────────────────────────────
+      - spring.data.mongodb.uri=mongodb://mongoAdmin:mongoPassword@mongo
+      - spring.data.mongodb.port=27017
+      - spring.data.mongodb.database=factoryx-mongo-db
+      - spring.data.mongodb.username=mongoAdmin
+      - spring.data.mongodb.password=mongoPassword
+      # ── Provider Identity ──────────────────────────────────────
+      - org.factoryx.library.hostname=dsp-native-basyx
+      # used for the inbound aud check; no DID resolution happens in mock mode
+      - org.factoryx.library.id=provider
+      # ── Validation mode: THE varied factor (mvd -> mock) ───────
+      - org.factoryx.library.validationservice=mock
+      # (policyservice left unset -> EmptyPolicyService, same default as the MVD arm)
+      # (all org.factoryx.library.mvd.* outbound settings removed — unused by MockValidationService)
+      # ── MQTT ───────────────────────────────────────────────────
+      - basyx.feature.mqtt.enabled=true
+      - mqtt.clientId=dsp-native-basyx
+      - mqtt.hostname=mqtt-broker
+      - mqtt.port=1883
+      - mqtt.protocol=tcp
+      - mqtt.username=user
+      - mqtt.password=pw
+    volumes:
+      - ./src/main/resources/rules.json:/app/resources/rules.json:ro
+      - ./additional_config/opentelemetry-javaagent.jar:/app/opentelemetry-javaagent.jar:ro
+      - ./additional_config/opentelemetry.properties:/app/opentelemetry.properties:ro
+    depends_on:
+      mongo:
+        condition: service_healthy
+      mqtt-broker:
+        condition: service_started
+      keycloak:
+        condition: service_started
+    ports:
+      - 8090:8090
+    networks:
+      - dsp-native-basyx
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  keycloak:
+    image: keycloak/keycloak:26.2
+    container_name: keycloak
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    environment:
+      KC_HOSTNAME: keycloak
+      KC_SPI_INITIALIZER_ISSUER_BASE_URI: http://localhost:8080
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: keycloak-admin
+      KC_HEALTH_ENABLED: true
+      KC_DB: dev-file
+      KC_CACHE: local
+    command: [ "start-dev", "--import-realm" ]
+    ports:
+      - 8080:8080
+      - 9000:9000    # ← expose management port so healthcheck works
+    volumes:
+      - keycloak_data:/opt/jboss/keycloak/standalone/data
+      - ./keycloak/realm:/opt/keycloak/data/import
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -sf http://localhost:9000/health/live || exit 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 90s
+    networks:
+      - dsp-native-basyx
+
+  mongo:
+    image: mongo:5.0.10
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    ports:
+      - "27017:27017"
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongoAdmin
+      MONGO_INITDB_ROOT_PASSWORD: mongoPassword
+    restart: always
+    healthcheck:
+      test: mongo
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - dsp-native-basyx
+
+  mqtt-broker:
+    container_name: mqtt-broker
+    image: eclipse-mosquitto:2
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+    ports:
+      - 1883:1883
+    networks:
+      - dsp-native-basyx
+
+  dsp-native-basyx-dns-host-resolver:
+    container_name: resolver
+    image: dvdarias/docker-hoster:latest
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+      - /etc/hosts:/tmp/hosts
+
+  # DSP callback sink for the identity-OFF arm (see k6-scripts/basyx-off/README.md).
+  # The provider pushes the contract agreement / FINALIZED event / transfer-start
+  # (which carries the EDR) here; the k6 raw-DSP driver polls it. Required only
+  # because k6 cannot host the consumer's async DSP callbacks. On the
+  # dsp-native-basyx network so the provider can reach it by hostname; port 8888
+  # published so k6 on the host can poll it.
+  dsp-callback-sink:
+    container_name: dsp-callback-sink
+    image: node:20-alpine
+    pull_policy: missing
+    command: ["node", "/app/sink.js"]
+    working_dir: /app
+    volumes:
+      - ./k6-scripts/tools/dsp-callback-sink/sink.js:/app/sink.js:ro
+    ports:
+      - "8888:8888"
+    networks:
+      - dsp-native-basyx
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # Monitoring overlay — identical to the MVD arm so metrics are comparable.
+  # ─────────────────────────────────────────────────────────────────────────
+  otel-collector:
+    container_name: otel-collector
+    image: otel/opentelemetry-collector-contrib:0.108.0
+    command:
+      - --config=/etc/otel-collector-config.yaml
+    volumes:
+      - ./monitoring/otel-collector-config.yaml:/etc/otel-collector-config.yaml:ro
+    ports:
+      - "4317:4317"   # OTLP/gRPC ingest
+      - "8889:8889"   # Prometheus metrics endpoint
+    networks:
+      - dsp-native-basyx
+    restart: unless-stopped
+
+  tempo:
+    container_name: tempo
+    image: grafana/tempo:2.6.0
+    command:
+      - -config.file=/etc/tempo.yaml
+    volumes:
+      - ./monitoring/tempo.yaml:/etc/tempo.yaml:ro
+      - tempo-data:/var/tempo
+    ports:
+      - "3200:3200"
+    networks:
+      - dsp-native-basyx
+    restart: unless-stopped
+
+  node-exporter:
+    container_name: node-exporter
+    image: prom/node-exporter:v1.8.2
+    command:
+      - --path.procfs=/host/proc
+      - --path.sysfs=/host/sys
+      - --path.rootfs=/rootfs
+      - --collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)
+      - --collector.filesystem.fs-types-exclude=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs)$$
+    pid: host
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    ports:
+      - "9100:9100"
+    networks:
+      - dsp-native-basyx
+    restart: unless-stopped
+
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:v2.54.1
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=7d
+      - --web.enable-lifecycle
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    ports:
+      - "9090:9090"
+    depends_on:
+      - node-exporter
+      - otel-collector
+    networks:
+      - dsp-native-basyx
+    restart: unless-stopped
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:11.2.0
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_AUTH_DISABLE_LOGIN_FORM=false
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./monitoring/grafana/dashboards:/etc/grafana/dashboards:ro
+      - grafana-data:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    networks:
+      - dsp-native-basyx
+    restart: unless-stopped
+
+volumes:
+  keycloak_data:
+  prometheus-data:
+  grafana-data:
+  tempo-data:
+
+networks:
+  dsp-native-basyx:
+    name: dsp-native-basyx
+    driver: bridge

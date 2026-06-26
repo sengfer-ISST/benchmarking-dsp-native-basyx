@@ -20,6 +20,29 @@
 
   "edr": { "useEdrEndpoint": true },
 
+  "off": {
+    "_doc": "Identity-OFF (mock) raw-DSP driver settings (basyx-off/dsp-flow.js). Only used when driving the mock arm; the ON arm uses the shared harness via consumerManagementUrl.",
+    "providerDspBase": "http://localhost:8090/dsp",
+    "audience": "http://dsp-native-basyx:8090/dsp",
+    "clientId": "consumer",
+    "assigner": "provider",
+    "callbackAddress": "http://dsp-callback-sink:8888",
+    "sinkPollBase": "http://localhost:8888",
+    "transferFormat": "HttpData-PULL",
+    "assetIdSelector": "e38a0f92-4ee8-436c-a535-0f9cdad4c3c8",
+    "pullRewriteFrom": "http://dsp-native-basyx:8090",
+    "pullRewriteTo": "http://localhost:8090",
+    "pollIntervalMs": 250,
+    "pollTimeoutMs": 15000,
+    "_live_verify": {
+      "audience": "must start with the provider's own DSP url = http://{org.factoryx.library.hostname}:8090/dsp -> dsp-native-basyx. Confirm against MockValidationService.getOwnDspUrl at smoke.",
+      "providerDspBase": "k6 posts here from the host; 8090 is published, so localhost:8090 works. Token AUDIENCE stays the container url (above) — request target and token claim are different things.",
+      "assetIdSelector": "RESOLVED 2026-06-26: target a REGULAR shell DataAsset (seed it first; this is the Bruno shell e38a0f92-...), NOT an *ApiAsset — *ApiAsset entries are write-forward proxies and 404 on a GET pull. The driver auto-skips *ApiAsset datasets if the selector doesn't match.",
+      "pullRewrite": "the TransferStart endpoint uses the container hostname; rewritten to localhost:8090 for the host-side pull. If docker-hoster resolves dsp-native-basyx on the host, the rewrite is harmless.",
+      "transferFormat": "dct:format on the TransferRequestMessage; confirm the provider accepts HttpData-PULL for the ApiAsset."
+    }
+  },
+
   "payload": {
     "urlTemplate": null,
     "note": "BaSyx has no separate data plane (the AAS repo IS the data plane, synchronous GET) -> payload-sweep is not applicable; transfer/EDR half is degenerate (methodology Gk.RQ4)."
