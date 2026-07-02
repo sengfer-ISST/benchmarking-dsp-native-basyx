@@ -51,7 +51,7 @@ services:
   shared-postgres:
     container_name: shared-postgres
     image: postgres:16.4-alpine
-    pull_policy: never
+    pull_policy: missing
     deploy:
       resources:
         limits:
@@ -74,7 +74,7 @@ services:
   shared-vault:
     container_name: shared-vault
     image: vault:1.13.3
-    pull_policy: never
+    pull_policy: missing
     deploy:
       resources:
         limits:
@@ -97,7 +97,7 @@ services:
   vault-init:
     container_name: vault-init
     image: alpine:3.19
-    pull_policy: never
+    pull_policy: missing
     depends_on:
       shared-vault:
         condition: service_healthy
@@ -270,7 +270,7 @@ services:
   consumer-controlplane:
     container_name: consumer-controlplane
     image: edc-controlplane-postgresql-hashicorp-vault:latest
-    pull_policy: never
+    pull_policy: missing
     deploy:
       resources:
         limits:
