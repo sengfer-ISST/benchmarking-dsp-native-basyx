@@ -14,9 +14,20 @@
 
   "auth": { "headerName": null, "headerValue": null },
 
-  "seed": { "enabled": false },
+  "seed": {
+    "enabled": true,
+    "style": "basyx-shell",
+    "globalAssetId": "urn:uuid:580d3adf-1981-44a0-a214-13d6ceed9379",
+    "idShort": "Car",
+    "assetType": "Car",
+    "keycloakTokenUrl": "http://localhost:8080/realms/dsp-native-basyx/protocol/openid-connect/token",
+    "keycloakClientId": "dsp-native-basyx-client",
+    "keycloakUsername": "the.admin",
+    "keycloakPassword": "adminPassword",
+    "shellsUrl": "http://localhost:8090/shells"
+  },
 
-  "catalog": { "assetIdSelector": "ShellsApiAsset" },
+  "catalog": { "assetIdSelector": "e38a0f92-4ee8-436c-a535-0f9cdad4c3c8" },
 
   "edr": { "useEdrEndpoint": true },
 
