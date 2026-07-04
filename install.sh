@@ -79,6 +79,22 @@ echo ">>> Waiting for runtimes to settle (vault seed + schema autocreate) ..."
 sleep 5
 docker compose -f "$COMPOSE_FILE" ps
 
+# The ON (MVD/DCP) arm boots the Identity Hubs EMPTY: the participant STS secrets
+# (consumersecret/providersecret) are NOT seeded by compose. Until they exist the
+# consumer's catalog request 502s ("Failed to fetch client secret ... alias:
+# consumersecret"). identity-setup.js is the headless port of the fx-bruno/identities
+# collection — provision once per fresh ON stack, no Bruno GUI needed (server-safe).
+PREREQ_BLOCK=""
+if [ "$IDMODE" = "on" ]; then
+  PREREQ_BLOCK="
+PREREQUISITE (identity ON arm) — run ONCE before smoke or any other scenario,
+else the catalog request fails with HTTP 502 on missing vault alias 'consumersecret':
+  cd k6-scripts && k6 run identity-setup.js
+  #   remote host (e.g. WinSCP server driving the docker host):
+  #   k6 run -e IDHOST=<docker-host> identity-setup.js
+"
+fi
+
 cat <<EOF
 
 ──────────────────────────────────────────────────────────────────────────────
@@ -90,7 +106,7 @@ Monitoring (published to host):
   Grafana      http://localhost:3000      (admin / admin)
   Prometheus   http://localhost:9090
   Tempo        http://localhost:3200
-
+${PREREQ_BLOCK}
 Drive with the shared k6 harness (config/basyx.json), matching this arm:
   k6 run -e CONNECTOR=basyx -e IDENTITY_MODE=${IDMODE} scenarios/smoke.js
 
