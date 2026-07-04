@@ -25,6 +25,11 @@
 *.war
 *.ear
 
+# ...except the OpenTelemetry Java agent — bind-mounted by the docker-compose
+# monitoring stack (additional_config/); must ship with the repo so it is
+# present after a git pull / WinSCP sync on the server.
+!opentelemetry-javaagent.jar
+
 # OS-specific files
 .DS_Store
 Thumbs.db
