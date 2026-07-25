@@ -348,7 +348,9 @@ services:
       - keycloak_data:/opt/jboss/keycloak/standalone/data
       - ./keycloak/realm:/opt/keycloak/data/import
     healthcheck:
-      test: [ "CMD-SHELL", "curl -sf http://localhost:9000/health/live || exit 1" ]
+      # The Keycloak 26 image ships neither curl nor wget — probe the management
+      # health endpoint (KC_HEALTH_ENABLED=true) with bash's /dev/tcp instead.
+      test: [ "CMD-SHELL", "exec 3<>/dev/tcp/127.0.0.1/9000 && printf 'GET /health/live HTTP/1.1\\r\\nHost: localhost\\r\\nConnection: close\\r\\n\\r\\n' >&3 && grep -q '\"status\": \"UP\"' <&3" ]
       interval: 10s
       timeout: 5s
       retries: 10

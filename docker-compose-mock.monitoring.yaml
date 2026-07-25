@@ -107,7 +107,9 @@ services:
       - keycloak_data:/opt/jboss/keycloak/standalone/data
       - ./keycloak/realm:/opt/keycloak/data/import
     healthcheck:
-      test: [ "CMD-SHELL", "curl -sf http://localhost:9000/health/live || exit 1" ]
+      # The Keycloak 26 image ships neither curl nor wget — probe the management
+      # health endpoint (KC_HEALTH_ENABLED=true) with bash's /dev/tcp instead.
+      test: [ "CMD-SHELL", "exec 3<>/dev/tcp/127.0.0.1/9000 && printf 'GET /health/live HTTP/1.1\\r\\nHost: localhost\\r\\nConnection: close\\r\\n\\r\\n' >&3 && grep -q '\"status\": \"UP\"' <&3" ]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -127,11 +129,10 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongoAdmin
       MONGO_INITDB_ROOT_PASSWORD: mongoPassword
-    volumes:
-      # Persist AAS data across restarts so the seeded shell survives. The k6 OFF
-      # arm also self-seeds in setup() (basyx-off/seed.js), so this is belt-and-
-      # braces; `docker compose down -v` still wipes it (then setup() re-seeds).
-      - mongo-data:/data/db
+    # No data volume — Mongo is EPHEMERAL on purpose, matching the identity-ON
+    # arm (docker-compose.monitoring.yaml): every boot starts from a clean store
+    # and the k6 driver self-seeds in setup() (basyx-off/seed.js). A persistent
+    # volume here would make OFF-arm state differ from ON across reboots.
     restart: always
     healthcheck:
       test: mongo
@@ -274,7 +275,6 @@ services:
 
 volumes:
   keycloak_data:
-  mongo-data:
   prometheus-data:
   grafana-data:
   tempo-data:

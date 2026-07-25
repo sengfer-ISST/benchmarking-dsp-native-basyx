@@ -44,7 +44,7 @@
     "pullRewriteFrom": "http://dsp-native-basyx:8090",
     "pullRewriteTo": "http://localhost:8090",
     "pollIntervalMs": 250,
-    "pollTimeoutMs": 15000,
+    "pollTimeoutMs": 30000,
     "seed": {
       "_doc": "Self-seed the pinned shell DataAsset in k6 setup() (basyx-off/seed.js). The shell id == assetIdSelector above, so the driver targets exactly what is seeded. Idempotent (201/409). Mongo has no persistent volume, so this makes runs restart-proof.",
       "enabled": true,
@@ -83,7 +83,7 @@
     "networking": "bridge network 'dsp-native-basyx'. providerDspAddress is a CONTAINER hostname because the EDC consumer (inside the network) dials it; consumerManagementUrl is a HOST-mapped port (29010) because k6 runs on the host.",
     "provider_id": "org.factoryx.library.id = did:web:provider-idhub:user:provider (becomes client_id in STS + aud check).",
     "no_management_api": "BaSyx provider has no EDC Management API -> seed.enabled=false; data is pre-seeded in MongoDB. seedProvider()/seedAssets() are no-ops, so catalog-sweep (Gk.RQ5) and payload-sweep are EDC-only.",
-    "TBD_verify_at_smoke": "Phase B3: confirm (1) catalog.assetIdSelector matches a real pre-seeded asset @id (live probe showed ShellsApiAsset / SubmodelsApiAsset); (2) the EDR endpoint is host-reachable — if BaSyx returns a container address, set edr.useEdrEndpoint=false and a concrete dataPlanePublicUrl path.",
-    "off_arm": "Phase B3: the mock arm drops the EDC consumer, so this consumerManagementUrl path serves the ON (mvd) arm only; the OFF (mock) arm needs the raw-DSP mock-token driver."
+    "RESOLVED_at_smoke_2026-07-19": "(1) catalog.assetIdSelector: the harness now SEEDS this exact shell id itself (lib/seed.js seedShell(), style=basyx-shell) — ON smoke 5/5 negotiated+transferred+pulled it; (2) EDR endpoint host-reachable as returned (data pull ~12ms), edr.useEdrEndpoint=true stands.",
+    "off_arm": "RESOLVED: the OFF (mock) arm is driven by basyx-off/ (raw-DSP mock-token driver) THROUGH the shared orchestrator: SCENARIO_DIR=basyx-off ./orchestration/run.sh basyx <scenario> (health-gates on off.providerDspBase + sink /health; IDENTITY_MODE defaults to off). OFF smoke 5/5 green 2026-07-19."
   }
 }

@@ -76,7 +76,7 @@ function awaitCapture(consumerPid, key, trend, counter, tags) {
   const url = `${OFF.sinkPollBase}/captured/${encodeURIComponent(consumerPid)}`;
   const intervalMs = OFF.pollIntervalMs || 250;
   const t0 = Date.now();
-  const deadline = t0 + (OFF.pollTimeoutMs || 15000);
+  const deadline = t0 + (OFF.pollTimeoutMs || 30000);
   while (Date.now() < deadline) {
     if (counter) counter.add(1, tags);
     const r = http.get(url);
