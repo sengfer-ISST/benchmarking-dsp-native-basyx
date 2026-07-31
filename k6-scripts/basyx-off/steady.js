@@ -14,15 +14,20 @@ export const options = Object.assign({}, baseOptions, {
   scenarios: {
     steady: {
       executor: 'constant-arrival-rate',
-      rate: Number(__ENV.RATE || 5),
+      rate: Number(__ENV.RATE || 2),
       timeUnit: '1s',
-      duration: __ENV.DURATION || '10m',
+      duration: __ENV.DURATION || '5m',
       preAllocatedVUs: Number(__ENV.PREALLOCATED_VUS || 50),
       maxVUs: Number(__ENV.MAX_VUS || 200),
       tags: { scenario: 'steady' },
     },
   },
   thresholds: {
+    // VALIDITY GATE (mirrors ../scenarios/): a dropped iteration means k6 could not
+    // start a scheduled transaction, so the offered rate was not delivered and the
+    // run does not describe its nominal load. Must match the ON arm or X1 compares
+    // runs judged by different standards.
+    'dropped_iterations': ['count<1'],
     'dsp_transaction_failed_rate': ['rate<0.01'],
     'time_to_agreed': ['p(95)<8000', 'p(99)<15000'],
     'time_to_edr': ['p(95)<8000'],

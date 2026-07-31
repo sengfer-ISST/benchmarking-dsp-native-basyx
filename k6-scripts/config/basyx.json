@@ -1,19 +1,18 @@
 {
   "name": "basyx",
   "serviceNamespace": "dsp-native-basyx-mvd",
-
   "consumerManagementUrl": "http://localhost:29010/management",
   "providerManagementUrl": null,
   "dataPlanePublicUrl": "http://localhost:8090",
-
   "providerDspAddress": "http://dsp-native-basyx:8090/dsp",
   "providerId": "did:web:provider-idhub:user:provider",
   "consumerId": "did:web:consumer-idhub:user:consumer",
   "protocol": "dataspace-protocol-http",
   "transferType": "HttpData-PULL",
-
-  "auth": { "headerName": null, "headerValue": null },
-
+  "auth": {
+    "headerName": null,
+    "headerValue": null
+  },
   "seed": {
     "enabled": true,
     "style": "basyx-shell",
@@ -26,11 +25,12 @@
     "keycloakPassword": "adminPassword",
     "shellsUrl": "http://localhost:8090/shells"
   },
-
-  "catalog": { "assetIdSelector": "e38a0f92-4ee8-436c-a535-0f9cdad4c3c8" },
-
-  "edr": { "useEdrEndpoint": true },
-
+  "catalog": {
+    "assetIdSelector": "e38a0f92-4ee8-436c-a535-0f9cdad4c3c8"
+  },
+  "edr": {
+    "useEdrEndpoint": true
+  },
   "off": {
     "_doc": "Identity-OFF (mock) raw-DSP driver settings (basyx-off/dsp-flow.js). Only used when driving the mock arm; the ON arm uses the shared harness via consumerManagementUrl.",
     "providerDspBase": "http://localhost:8090/dsp",
@@ -64,20 +64,26 @@
       "transferFormat": "dct:format on the TransferRequestMessage; confirm the provider accepts HttpData-PULL for the ApiAsset."
     }
   },
-
   "payload": {
+    "applicable": false,
     "urlTemplate": null,
-    "note": "BaSyx has no separate data plane (the AAS repo IS the data plane, synchronous GET) -> payload-sweep is not applicable; transfer/EDR half is degenerate (methodology Gk.RQ4)."
+    "note": "BaSyx has no separate data plane (the AAS repo IS the data plane, synchronous GET), so a payload sweep would vary nothing. Excluded by design, like catalog-sweep; see methodology Gk.RQ4."
   },
-
-  "prometheus": { "baseUrl": "http://localhost:9090" },
-
+  "prometheus": {
+    "baseUrl": "http://localhost:9090"
+  },
   "services": {
-    "sut": ["dsp-native-basyx", "consumer-controlplane"],
-    "provider": ["dsp-native-basyx"],
-    "consumer": ["consumer-controlplane"]
+    "sut": [
+      "dsp-native-basyx",
+      "consumer-controlplane"
+    ],
+    "provider": [
+      "dsp-native-basyx"
+    ],
+    "consumer": [
+      "consumer-controlplane"
+    ]
   },
-
   "_notes": {
     "connector": "DSP-Native BaSyx. ON arm = org.factoryx.library.validationservice=mvd, driven by an EDC consumer-controlplane (docker-compose.monitoring.yaml).",
     "networking": "bridge network 'dsp-native-basyx'. providerDspAddress is a CONTAINER hostname because the EDC consumer (inside the network) dials it; consumerManagementUrl is a HOST-mapped port (29010) because k6 runs on the host.",

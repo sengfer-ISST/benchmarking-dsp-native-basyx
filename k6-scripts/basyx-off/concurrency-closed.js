@@ -10,20 +10,19 @@ import { buildSummary } from '../lib/metrics.js';
 import { runDspFlow } from './dsp-flow.js';
 import { seedShell } from './seed.js';
 
-const STAGE = __ENV.STAGE_DURATION || '2m';
+const STAGE = __ENV.STAGE_DURATION || '90s';
+// Ladder MUST match ../scenarios/concurrency-closed.js -- see the note there.
+const VU_STAGES = String(__ENV.VU_STAGES || '5,10,20,50')
+  .split(',').map((s) => Number(s.trim())).filter((n) => n > 0);
+const vuStages = VU_STAGES.map((v) => ({ target: v, duration: STAGE }));
+vuStages.push({ target: VU_STAGES[VU_STAGES.length - 1], duration: STAGE });
 
 export const options = Object.assign({}, baseOptions, {
   scenarios: {
     concurrency: {
       executor: 'ramping-vus',
       startVUs: 1,
-      stages: [
-        { target: 10, duration: STAGE },
-        { target: 50, duration: STAGE },
-        { target: 100, duration: STAGE },
-        { target: Number(__ENV.MAX_VUS || 200), duration: STAGE },
-        { target: Number(__ENV.MAX_VUS || 200), duration: STAGE }, // hold at top
-      ],
+      stages: vuStages,
       gracefulStop: '30s',
       tags: { scenario: 'concurrency' },
     },

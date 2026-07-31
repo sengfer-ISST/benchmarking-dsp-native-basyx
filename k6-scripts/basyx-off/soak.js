@@ -13,15 +13,20 @@ export const options = Object.assign({}, baseOptions, {
   scenarios: {
     soak: {
       executor: 'constant-arrival-rate',
-      rate: Number(__ENV.RATE || 3),
+      rate: Number(__ENV.RATE || 1),
       timeUnit: '1s',
-      duration: __ENV.DURATION || '1h',
+      duration: __ENV.DURATION || '30m',
       preAllocatedVUs: Number(__ENV.PREALLOCATED_VUS || 50),
       maxVUs: Number(__ENV.MAX_VUS || 200),
       tags: { scenario: 'soak' },
     },
   },
   thresholds: {
+    // VALIDITY GATE (mirrors ../scenarios/): a dropped iteration means k6 could not
+    // start a scheduled transaction, so the offered rate was not delivered and the
+    // run does not describe its nominal load. Must match the ON arm or X1 compares
+    // runs judged by different standards.
+    'dropped_iterations': ['count<1'],
     'dsp_transaction_failed_rate': ['rate<0.02'],
     'e2e_transaction_duration': ['p(95)<20000'],
   },

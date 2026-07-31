@@ -10,7 +10,14 @@ import { buildSummary } from '../lib/metrics.js';
 import { runDspFlow } from './dsp-flow.js';
 import { seedShell } from './seed.js';
 
-const STAGE = __ENV.STAGE_DURATION || '2m';
+const STAGE = __ENV.STAGE_DURATION || '90s';
+// Ladder MUST match ../scenarios/saturation-open.js (same default, same env knob):
+// the G1/G2 identity-overhead delta X1 is only meaningful if both arms were offered
+// the same load. Legacy ladder was 2,5,10,20,40 -- far above the measured knee.
+const RATES = String(__ENV.RATES || '1,2,3,5,8,12')
+  .split(',').map((s) => Number(s.trim())).filter((n) => n > 0);
+const satStages = RATES.map((r) => ({ target: r, duration: STAGE }));
+satStages.push({ target: RATES[RATES.length - 1], duration: STAGE });
 
 export const options = Object.assign({}, baseOptions, {
   scenarios: {
@@ -20,14 +27,7 @@ export const options = Object.assign({}, baseOptions, {
       timeUnit: '1s',
       preAllocatedVUs: Number(__ENV.PREALLOCATED_VUS || 100),
       maxVUs: Number(__ENV.MAX_VUS || 800),
-      stages: [
-        { target: 2, duration: STAGE },
-        { target: 5, duration: STAGE },
-        { target: 10, duration: STAGE },
-        { target: 20, duration: STAGE },
-        { target: 40, duration: STAGE },
-        { target: 40, duration: STAGE }, // hold at top to observe the steady tail
-      ],
+      stages: satStages,
       tags: { scenario: 'saturation' },
     },
   },
