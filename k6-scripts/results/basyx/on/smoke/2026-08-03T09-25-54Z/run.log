@@ -1,0 +1,77 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /home/rohitj/edc/benchmarking-dsp-native-basyx/k6-scripts/scenarios/smoke.js
+        output: Prometheus remote write (http://localhost:9090/api/v1/write)
+
+     scenarios: (100.00%) 1 scenario, 1 max VUs, 5m30s max duration (incl. graceful stop):
+              * smoke: 5 iterations for each of 1 VUs (maxDuration: 5m0s, gracefulStop: 30s)
+
+
+running (0m01.0s), 1/1 VUs, 0 complete and 0 interrupted iterations
+smoke   [   0% ] 1 VUs  0m00.8s/5m0s  0/5 iters, 5 per VU
+
+running (0m02.0s), 1/1 VUs, 0 complete and 0 interrupted iterations
+smoke   [   0% ] 1 VUs  0m01.8s/5m0s  0/5 iters, 5 per VU
+
+running (0m03.0s), 1/1 VUs, 1 complete and 0 interrupted iterations
+smoke   [  20% ] 1 VUs  0m02.8s/5m0s  1/5 iters, 5 per VU
+
+running (0m04.0s), 1/1 VUs, 1 complete and 0 interrupted iterations
+smoke   [  20% ] 1 VUs  0m03.8s/5m0s  1/5 iters, 5 per VU
+
+running (0m05.0s), 1/1 VUs, 2 complete and 0 interrupted iterations
+smoke   [  40% ] 1 VUs  0m04.8s/5m0s  2/5 iters, 5 per VU
+
+running (0m06.0s), 1/1 VUs, 2 complete and 0 interrupted iterations
+smoke   [  40% ] 1 VUs  0m05.8s/5m0s  2/5 iters, 5 per VU
+
+running (0m07.0s), 1/1 VUs, 3 complete and 0 interrupted iterations
+smoke   [  60% ] 1 VUs  0m06.8s/5m0s  3/5 iters, 5 per VU
+
+running (0m08.0s), 1/1 VUs, 3 complete and 0 interrupted iterations
+smoke   [  60% ] 1 VUs  0m07.8s/5m0s  3/5 iters, 5 per VU
+
+running (0m09.0s), 1/1 VUs, 3 complete and 0 interrupted iterations
+smoke   [  60% ] 1 VUs  0m08.8s/5m0s  3/5 iters, 5 per VU
+
+running (0m10.0s), 1/1 VUs, 4 complete and 0 interrupted iterations
+smoke   [  80% ] 1 VUs  0m09.8s/5m0s  4/5 iters, 5 per VU
+
+running (0m11.0s), 1/1 VUs, 4 complete and 0 interrupted iterations
+smoke   [  80% ] 1 VUs  0m10.8s/5m0s  4/5 iters, 5 per VU
+
+================ DSP benchmark summary ================
+-- per-phase latency --
+  catalog                    p50=79.8 ms  p95=93.1 ms  p99=94.0 ms  max=94.2 ms  n=5
+  negotiation init (POST)    p50=8.6 ms  p95=15.1 ms  p99=16.2 ms  max=16.4 ms  n=5
+  time-to-AGREED (async)     p50=1535.0 ms  p95=2195.8 ms  p99=2276.8 ms  max=2297.0 ms  n=5
+  transfer init (POST)       p50=8.7 ms  p95=9.1 ms  p99=9.2 ms  max=9.2 ms  n=5
+  time-to-EDR (async)        p50=517.0 ms  p95=769.8 ms  p99=770.0 ms  max=770.0 ms  n=5
+  data pull                  p50=6.7 ms  p95=7.2 ms  p99=7.3 ms  max=7.3 ms  n=5
+-- end-to-end + throughput --
+  e2e transaction            p50=2172.0 ms  p95=2814.8 ms  p99=2895.0 ms  max=2915.0 ms  n=5
+  data throughput (MB/s)     p50=0.0  p95=0.0  p99=0.0  max=0.0  n=5
+-- outcomes --
+  transactions succeeded     count=5  rate=0.418/s
+  transactions failed        (no data)
+  failed rate                rate=0.00%  (pass=0 fail=5)
+    of which TERMINATED      (no data)
+    of which TIMED OUT       (no data)
+    of which HTTP-FAILED     (no data)
+  failure accounting       (no failures)
+-- observer effect (poll load) --
+  negotiation polls          count=37  rate=3.091/s
+  edr polls                  count=17  rate=1.420/s
+  polls per transaction     negotiation=7.4  edr=3.4  (timeout ceiling=120)
+=======================================================
+(full summary -> /home/rohitj/edc/benchmarking-dsp-native-basyx/k6-scripts/results/basyx/on/smoke/2026-08-03T09-25-54Z/k6-summary.json; POLL_INTERVAL_MS=250; IDENTITY_MODE=on)
+
+running (0m12.0s), 0/1 VUs, 5 complete and 0 interrupted iterations
+smoke ✓ [ 100% ] 1 VUs  0m11.8s/5m0s  5/5 iters, 5 per VU
