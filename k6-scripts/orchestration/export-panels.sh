@@ -101,8 +101,18 @@ rm -f /tmp/.gf_probe.$$
 echo "renderer OK -> $OUTDIR (profile=$PROFILE theme=$THEME ${WIDTH}x${HEIGHT})"
 
 # --- pick the runs ---------------------------------------------------------
-# Newest run per (connector, arm, scenario) unless ALL_RUNS=1: for a thesis figure you
-# want one representative image, not one per repetition.
+# ONE run per (connector, arm, scenario, sweep-variant) unless ALL_RUNS=1: a thesis
+# figure wants one representative image, not one per repetition. The repetitions are
+# still all present in results/ and all of them feed the numbers; only the picture
+# comes from a single run.
+#
+# Which one: the FIRST repetition. Paths carry an ISO-8601 timestamp, so `sort` orders
+# them chronologically ascending and the first match per key wins. (An earlier comment
+# here claimed "newest" — it was wrong, and the behaviour is what shipped for the
+# 2026-08 campaigns. Do NOT "fix" it to newest: Prometheus is wiped by cleanup.sh, so
+# already-exported connectors cannot be re-rendered, and switching now would leave one
+# connector's figures drawn from a different repetition than the others'. Consistency
+# across connectors is worth more than the choice of repetition, which is arbitrary.)
 mapfile -t METAS < <(find "$ROOT/results" -name meta.json | sort)
 declare -A SEEN
 count=0; failed=0; skipped=0

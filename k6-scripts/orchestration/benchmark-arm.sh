@@ -76,13 +76,31 @@ say() { echo "$(date -u +%H:%M:%S) | $*" | tee -a "$CAMPAIGN_LOG"; }
 # --- preflight -------------------------------------------------------------
 # Fail in seconds rather than discovering after the first 90 s health-gate timeout.
 say "=== campaign: $CONNECTOR / identity-$ARM ==="
-CONSUMER_URL="$(jq -r '.consumerManagementUrl // empty' "$CONFIG_PATH")"
-code="$(curl -s -o /dev/null -m 3 -w '%{http_code}' "$CONSUMER_URL" 2>/dev/null || true)"
-if [ -z "$code" ] || [ "$code" = "000" ]; then
-  say "PREFLIGHT FAIL: consumer API not answering at $CONSUMER_URL"
-  say "                bring the arm up first:  ./install.sh $ARM"
-  exit 3
+# WHICH endpoint proves the arm is up depends on the DRIVER, not on the connector.
+# The BaSyx identity-OFF arm has no EDC consumer at all — its compose ships a
+# dsp-callback-sink in place of a consumer-controlplane — so probing
+# consumerManagementUrl there reports a dead stack that is in fact perfectly healthy.
+# This mirrors the health-gate selection in run.sh (step 2). Keep the two jq
+# expressions identical: if they diverge, this preflight and the per-run gate will
+# disagree about what "up" means.
+SDIR="${SCENARIO_DIR:-scenarios}"
+if [ "$SDIR" = "scenarios" ]; then
+  mapfile -t HEALTH_URLS < <(jq -r '[.consumerManagementUrl] | map(select(.))[]' "$CONFIG_PATH")
+else
+  mapfile -t HEALTH_URLS < <(jq -r '[.off.providerDspBase, (if .off.sinkPollBase then .off.sinkPollBase + "/health" else null end)] | map(select(.))[]' "$CONFIG_PATH")
 fi
+[ "${#HEALTH_URLS[@]}" -gt 0 ] || {
+  say "PREFLIGHT FAIL: no health URLs in $CONFIG_PATH for SCENARIO_DIR=$SDIR"; exit 3; }
+# Any HTTP status counts: a 4xx from an unauthenticated probe still proves a listener.
+# curl -w already emits 000 on a connection failure, so no `|| echo 000` fallback here.
+for u in "${HEALTH_URLS[@]}"; do
+  code="$(curl -s -o /dev/null -m 3 -w '%{http_code}' "$u" 2>/dev/null || true)"
+  if [ -z "$code" ] || [ "$code" = "000" ]; then
+    say "PREFLIGHT FAIL: nothing answering at $u"
+    say "                bring the arm up first:  ./install.sh $ARM"
+    exit 3
+  fi
+done
 curl -sf -m 3 "$PROM_URL/-/ready" >/dev/null 2>&1 || {
   say "PREFLIGHT FAIL: Prometheus not ready at $PROM_URL"; exit 3; }
 if [ -z "${CANONICAL_DIR:-}" ]; then
