@@ -14,7 +14,7 @@ const STAGE = __ENV.STAGE_DURATION || '90s';
 // Ladder MUST match ../scenarios/saturation-open.js (same default, same env knob):
 // the G1/G2 identity-overhead delta X1 is only meaningful if both arms were offered
 // the same load. Legacy ladder was 2,5,10,20,40 -- far above the measured knee.
-const RATES = String(__ENV.RATES || '1,2,3,5,8,12')
+const RATES = String(__ENV.RATES || '1,2,3,4,5,6')
   .split(',').map((s) => Number(s.trim())).filter((n) => n > 0);
 const satStages = RATES.map((r) => ({ target: r, duration: STAGE }));
 satStages.push({ target: RATES[RATES.length - 1], duration: STAGE });
@@ -25,7 +25,7 @@ export const options = Object.assign({}, baseOptions, {
       executor: 'ramping-arrival-rate',
       startRate: Number(__ENV.START_RATE || 1),
       timeUnit: '1s',
-      preAllocatedVUs: Number(__ENV.PREALLOCATED_VUS || 100),
+      preAllocatedVUs: Number(__ENV.PREALLOCATED_VUS || 600),
       maxVUs: Number(__ENV.MAX_VUS || 800),
       stages: satStages,
       tags: { scenario: 'saturation' },

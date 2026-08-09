@@ -35,13 +35,27 @@ CONFIG_PATH="$ROOT/config/${CONNECTOR}.json"
 
 # --- knobs -----------------------------------------------------------------
 GAP="${GAP:-120}"                 # seconds between scenarios, ON TOP of run.sh's settle
-REPS_STEADY="${REPS_STEADY:-2}"   # steady carries the RQ1 comparison, so it repeats
+# steady carries the RQ1 head-to-head AND every X1 figure, so it gets the most
+# repetition. Raised 2 -> 5 for the second campaign: at n=2 the median is just the
+# mean of two values and no interval estimate is defensible, so the study could
+# report a difference but never its precision. Five is the cheapest count that
+# supports one (5 x 5 min per arm is under half an hour of the campaign).
+REPS_STEADY="${REPS_STEADY:-5}"
 # catalog-sweep is a CURVE (4 sizes), and a single run per size gives no way to tell
 # a scaling effect from run-to-run noise. The 2026-08-01 DST run showed size=100
 # landing BELOW size=10 on the identity-ON arm — plausible noise, but unfalsifiable
 # at n=1. Same reasoning as REPS_STEADY: the scenarios that carry a headline claim
 # repeat, the diagnostic ones do not.
 REPS_CATALOG="${REPS_CATALOG:-2}"
+# The saturation knee is a headline RQ2 result and ran at n=1 in the first
+# campaign, so a knee difference between two connectors could not be distinguished
+# from run-to-run variation. Three runs give a range to compare against.
+REPS_SATURATION="${REPS_SATURATION:-3}"
+# Observer-effect control (scenarios/poll-sensitivity.js). Two runs per arm at
+# different poll intervals; cheap, and it is the only evidence that the polling
+# load does not determine the reported latency.
+WITH_POLL_SENSITIVITY="${WITH_POLL_SENSITIVITY:-1}"
+POLL_INTERVALS="${POLL_INTERVALS:-250 1000}"
 WITH_SOAK="${WITH_SOAK:-1}"
 WITH_PAYLOAD="${WITH_PAYLOAD:-1}"
 WITH_EXPORT="${WITH_EXPORT:-1}"
@@ -168,6 +182,16 @@ gap
 step "steady x${REPS_STEADY}" "$HERE/run-matrix.sh" "$CONNECTOR" "$REPS_STEADY" steady
 gap
 
+# 2b. Observer-effect control — same load as steady, only the poll interval varies.
+#     Runs here, right after steady, so both see the same undisturbed system.
+if [ "$WITH_POLL_SENSITIVITY" = "1" ]; then
+  for pi in $POLL_INTERVALS; do
+    step "poll-sensitivity @ ${pi}ms" env POLL_INTERVAL_MS="$pi" \
+      "$HERE/run.sh" "$CONNECTOR" poll-sensitivity
+  done
+  gap
+fi
+
 # 3. RQ3 endurance — needs a healthy system, so it runs before anything overloads it
 if [ "$WITH_SOAK" = "1" ]; then
   step "soak (30 min)" "$HERE/run.sh" "$CONNECTOR" soak
@@ -191,7 +215,7 @@ fi
 # 6. RQ2 — ramps last: they overload on purpose and leave transfers draining
 step "concurrency-closed" "$HERE/run-matrix.sh" "$CONNECTOR" 1 concurrency-closed
 gap
-step "saturation-open" "$HERE/run-matrix.sh" "$CONNECTOR" 1 saturation-open
+step "saturation-open x${REPS_SATURATION}" "$HERE/run-matrix.sh" "$CONNECTOR" "$REPS_SATURATION" saturation-open
 
 # --- figures ---------------------------------------------------------------
 # Before teardown, and before Prometheus' 7-day retention expires.

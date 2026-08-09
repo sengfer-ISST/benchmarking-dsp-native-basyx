@@ -74,9 +74,14 @@ function asArray(v) {
 // shared poll.js so time_to_agreed / time_to_edr are measured the same way).
 function awaitCapture(consumerPid, key, trend, counter, tags) {
   const url = `${OFF.sinkPollBase}/captured/${encodeURIComponent(consumerPid)}`;
-  const intervalMs = OFF.pollIntervalMs || 250;
+  // POLL_INTERVAL_MS first, so this arm responds to the same knob as the ON arm.
+  // Without it the poll-sensitivity scenario would silently run at the config
+  // value on every repetition and compare a variable against itself. run.sh always
+  // exports POLL_INTERVAL_MS and records it in meta.json, so the config value is
+  // only the fallback for a direct `k6 run`.
+  const intervalMs = Number(__ENV.POLL_INTERVAL_MS) || OFF.pollIntervalMs || 250;
   const t0 = Date.now();
-  const deadline = t0 + (OFF.pollTimeoutMs || 30000);
+  const deadline = t0 + (Number(__ENV.POLL_TIMEOUT_MS) || OFF.pollTimeoutMs || 30000);
   while (Date.now() < deadline) {
     if (counter) counter.add(1, tags);
     const r = http.get(url);

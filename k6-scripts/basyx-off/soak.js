@@ -13,7 +13,7 @@ export const options = Object.assign({}, baseOptions, {
   scenarios: {
     soak: {
       executor: 'constant-arrival-rate',
-      rate: Number(__ENV.RATE || 1),
+      rate: Number(__ENV.RATE || 0.5),
       timeUnit: '1s',
       duration: __ENV.DURATION || '30m',
       preAllocatedVUs: Number(__ENV.PREALLOCATED_VUS || 50),

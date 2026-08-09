@@ -14,7 +14,7 @@ export const options = Object.assign({}, baseOptions, {
   scenarios: {
     steady: {
       executor: 'constant-arrival-rate',
-      rate: Number(__ENV.RATE || 2),
+      rate: Number(__ENV.RATE || 1),
       timeUnit: '1s',
       duration: __ENV.DURATION || '5m',
       preAllocatedVUs: Number(__ENV.PREALLOCATED_VUS || 50),
