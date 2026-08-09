@@ -233,6 +233,18 @@ services:
       - org.factoryx.library.mvd.ststokenurl=http://provider-idhub:9292/api/sts/token
       # ── MVD inbound: VC issuer trust anchor ───────────────────
       - org.factoryx.library.mvd.trustedissuer=did:web:local-issuer-service:fx-issuer
+      # ── Logging ────────────────────────────────────────────────
+      # HELD CONSTANT ACROSS BOTH ARMS. At Spring's default INFO the provider logs
+      # per request, and MvdValidationService prints the whole inbound JWT (~1.5 kB
+      # a line): one saturation run produced 1.46 M lines / ~250 MB. That is not just
+      # a disk problem — the identity-ON arm wrote ~7x more log per transaction than
+      # the identity-OFF arm, which has no MvdValidationService, so string formatting
+      # and log I/O on the request path were part of the measured G1-G2 difference.
+      # Silencing the application packages removes that asymmetry; root stays at INFO
+      # so startup and failures are still captured. Raise per-package for diagnosis
+      # (e.g. logging.level.org.factoryx=DEBUG) on a re-run, never on a measured one.
+      - logging.level.org.factoryx=WARN
+      - logging.level.org.eclipse.digitaltwin.basyx=WARN
       # ── MQTT ───────────────────────────────────────────────────
       - basyx.feature.mqtt.enabled=true
       - mqtt.clientId=dsp-native-basyx
