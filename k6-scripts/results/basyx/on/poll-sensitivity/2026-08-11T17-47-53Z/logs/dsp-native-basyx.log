@@ -1,0 +1,138 @@
+2026-08-11T17:49:49.397Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-24] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Error sending AGREED MESSAGE to http://consumer-controlplane:9020/dsp/negotiations/6e29a6ed-a841-4407-9645-c2f03a0706d2/agreement for 5558032f-5329-45cf-ad1a-213de980b2dd
+2026-08-11T17:49:49.398Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-24] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Status code: 409 CONFLICT
+2026-08-11T17:49:49.399Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-24] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Response from consumer
+{
+    "@type": "dspace:ContractNegotiationError",
+    "dspace:code": "409",
+    "dspace:reason": "Cannot process ContractAgreementMessage because negotiation cannot be agreed",
+    "@context": {
+        "fx-policy": "https://w3id.org/factoryx/policy/v1.0/",
+        "tx": "https://w3id.org/tractusx/v0.0.1/ns/",
+        "tx-auth": "https://w3id.org/tractusx/auth/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "dct": "http://purl.org/dc/terms/",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "dspace": "https://w3id.org/dspace/v0.8/",
+        "@vocab": "https://w3id.org/edc/v0.0.1/ns/",
+        "edc": "https://w3id.org/edc/v0.0.1/ns/"
+    }
+}
+2026-08-11T17:49:49.399Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-24] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Body: 
+{
+    "@context": {
+        "@vocab": "https://w3id.org/edc/v0.0.1/ns/",
+        "edc": "https://w3id.org/edc/v0.0.1/ns/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "dct": "http://purl.org/dc/terms/",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "dspace": "https://w3id.org/dspace/v0.8/"
+    },
+    "@type": "dspace:ContractAgreementMessage",
+    "dspace:consumerPid": "6e29a6ed-a841-4407-9645-c2f03a0706d2",
+    "dspace:providerPid": "5558032f-5329-45cf-ad1a-213de980b2dd",
+    "dspace:agreement": {
+        "@type": "odrl:Agreement",
+        "@id": "3970612a-07b6-4331-ba23-6288a691cf16",
+        "odrl:target": "e38a0f92-4ee8-436c-a535-0f9cdad4c3c8",
+        "dspace:timestamp": "2026-08-11T17:49:49Z",
+        "odrl:assignee": "did:web:consumer-idhub:user:consumer",
+        "odrl:assigner": "did:web:provider-idhub:user:provider"
+    },
+    "dspace:callbackAddress": "http://dsp-native-basyx:8090/dsp"
+}
+2026-08-11T17:50:02.256Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-24] .f.l.c.e.p.s.h.SendContractFinalizedTask : Error sending FINALIZED MESSAGE to http://consumer-controlplane:9020/dsp/negotiations/9007d413-99d5-4c32-ac4e-1948ac8a8c50/events for 2dded76c-f7a2-4085-a5b0-2693380629ec
+2026-08-11T17:50:02.257Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-24] .f.l.c.e.p.s.h.SendContractFinalizedTask : Status code: 500 INTERNAL_SERVER_ERROR
+2026-08-11T17:50:02.270Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-22] o.f.l.c.e.p.s.h.SendTransferStartedTask  : Error sending STARTED MESSAGE to http://consumer-controlplane:9020/dsp/transfers/1dd538c3-acbb-439c-8fae-162c9ff308aa/start for 4102f652-a6b9-434f-89fe-7b6b7c60bc2d
+2026-08-11T17:50:02.270Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-22] o.f.l.c.e.p.s.h.SendTransferStartedTask  : Status code: 500 INTERNAL_SERVER_ERROR
+2026-08-11T17:50:02.270Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-22] o.f.l.c.e.p.s.h.SendTransferStartedTask  : Body: {"@context":{"@vocab":"https://w3id.org/edc/v0.0.1/ns/","edc":"https://w3id.org/edc/v0.0.1/ns/","dcat":"http://www.w3.org/ns/dcat#","dct":"http://purl.org/dc/terms/","odrl":"http://www.w3.org/ns/odrl/2/","dspace":"https://w3id.org/dspace/v0.8/"},"@type":"dspace:TransferStartMessage","dspace:consumerPid":"1dd538c3-acbb-439c-8fae-162c9ff308aa","dspace:providerPid":"4102f652-a6b9-434f-89fe-7b6b7c60bc2d","dspace:dataAddress":{"@type":"dspace:DataAddress","dspace:endpointType":"https://w3id.org/idsa/v4.1/HTTP","dspace:endpoint":"http://dsp-native-basyx:8090/dsp/data-access/e38a0f92-4ee8-436c-a535-0f9cdad4c3c8","dspace:endpointProperties":[{"@type":"dspace:EndpointProperty","dspace:name":"authorization","dspace:value":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaWQ6d2ViOnByb3ZpZGVyLWlkaHViOnVzZXI6cHJvdmlkZXIvc2luZ2xlQXNzZXRSZWFkT25seURhdGFBY2Nlc3NJc3N1ZXIiLCJleHAiOjE3ODY0NzA5MDIsImlhdCI6MTc4NjQ3MDYwMiwiZGFkIjoiaHR0cDovL2RzcC1uYXRpdmUtYmFzeXg6ODA5MC9kc3AvZGF0YS1hY2Nlc3MvZTM4YTBmOTItNGVlOC00MzZjLWE1MzUtMGY5Y2RhZDRjM2M4IiwiY2lkIjoiNGEyOThjOTAtNWEyMi00YzdjLTgwNWYtZWNiNmM3MWZjMWFjIn0.m5-nahTQpm36Z19OHGOHhyQUzL8RZg203sHpoU1wLGI"},{"@type":"dspace:EndpointProperty","dspace:name":"authType","dspace:value":"Bearer"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/authorization","dspace:value":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaWQ6d2ViOnByb3ZpZGVyLWlkaHViOnVzZXI6cHJvdmlkZXIvc2luZ2xlQXNzZXRSZWFkT25seURhdGFBY2Nlc3NJc3N1ZXIiLCJleHAiOjE3ODY0NzA5MDIsImlhdCI6MTc4NjQ3MDYwMiwiZGFkIjoiaHR0cDovL2RzcC1uYXRpdmUtYmFzeXg6ODA5MC9kc3AvZGF0YS1hY2Nlc3MvZTM4YTBmOTItNGVlOC00MzZjLWE1MzUtMGY5Y2RhZDRjM2M4IiwiY2lkIjoiNGEyOThjOTAtNWEyMi00YzdjLTgwNWYtZWNiNmM3MWZjMWFjIn0.m5-nahTQpm36Z19OHGOHhyQUzL8RZg203sHpoU1wLGI"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/endpoint","dspace:value":"http://dsp-native-basyx:8090/dsp/data-access/e38a0f92-4ee8-436c-a535-0f9cdad4c3c8"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/authType","dspace:value":"Bearer"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/refreshToken","dspace:value":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaWQ6d2ViOnByb3ZpZGVyLWlkaHViOnVzZXI6cHJvdmlkZXIvc2luZ2xlQXNzZXRSZWFkT25seURhdGFBY2Nlc3NJc3N1ZXIiLCJzdWIiOiJkaWQ6d2ViOmNvbnN1bWVyLWlkaHViOnVzZXI6Y29uc3VtZXIiLCJleHAiOjE3ODY0NzI0MDIsImlhdCI6MTc4NjQ3MDYwMiwidG9rZW4iOiJleUpoYkdjaU9pSklVekkxTmlKOS5leUpwYzNNaU9pSmthV1E2ZDJWaU9uQnliM1pwWkdWeUxXbGthSFZpT25WelpYSTZjSEp2ZG1sa1pYSXZjMmx1WjJ4bFFYTnpaWFJTWldGa1QyNXNlVVJoZEdGQlkyTmxjM05KYzNOMVpYSWlMQ0psZUhBaU9qRTNPRFkwTnpBNU1ESXNJbWxoZENJNk1UYzROalEzTURZd01pd2laR0ZrSWpvaWFIUjBjRG92TDJSemNDMXVZWFJwZG1VdFltRnplWGc2T0RBNU1DOWtjM0F2WkdGMFlTMWhZMk5sYzNNdlpUTTRZVEJtT1RJdE5HVmxPQzAwTXpaakxXRTFNelV0TUdZNVkyUmhaRFJqTTJNNElpd2lZMmxrSWpvaU5HRXlPVGhqT1RBdE5XRXlNaTAwWXpkakxUZ3dOV1l0WldOaU5tTTNNV1pqTVdGakluMC5tNS1uYWhUUXBtMzZaMTlPSEdPSGh5UVV6TDhSWmcyMDNzSHBvVTF3TEdJIn0.eoIngoKkdpEbTPB45efeeF7jIIRaKIuodJCCZnwDlxE"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/expiresIn","dspace:value":"300"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/refreshEndpoint","dspace:value":"http://dsp-native-basyx:8090/dsp/authorization/refresh"}]}}
+2026-08-11T17:50:10.853Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-23] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Error sending AGREED MESSAGE to http://consumer-controlplane:9020/dsp/negotiations/68e2964d-936b-48c9-a2d9-ebb7cbc7e74d/agreement for fb9deb6e-8a58-477b-9899-5c747a208614
+2026-08-11T17:50:10.853Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-23] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Status code: 409 CONFLICT
+2026-08-11T17:50:10.855Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-23] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Response from consumer
+{
+    "@type": "dspace:ContractNegotiationError",
+    "dspace:code": "409",
+    "dspace:reason": "Cannot process ContractAgreementMessage because negotiation cannot be agreed",
+    "@context": {
+        "fx-policy": "https://w3id.org/factoryx/policy/v1.0/",
+        "tx": "https://w3id.org/tractusx/v0.0.1/ns/",
+        "tx-auth": "https://w3id.org/tractusx/auth/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "dct": "http://purl.org/dc/terms/",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "dspace": "https://w3id.org/dspace/v0.8/",
+        "@vocab": "https://w3id.org/edc/v0.0.1/ns/",
+        "edc": "https://w3id.org/edc/v0.0.1/ns/"
+    }
+}
+2026-08-11T17:50:10.856Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-23] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Body: 
+{
+    "@context": {
+        "@vocab": "https://w3id.org/edc/v0.0.1/ns/",
+        "edc": "https://w3id.org/edc/v0.0.1/ns/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "dct": "http://purl.org/dc/terms/",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "dspace": "https://w3id.org/dspace/v0.8/"
+    },
+    "@type": "dspace:ContractAgreementMessage",
+    "dspace:consumerPid": "68e2964d-936b-48c9-a2d9-ebb7cbc7e74d",
+    "dspace:providerPid": "fb9deb6e-8a58-477b-9899-5c747a208614",
+    "dspace:agreement": {
+        "@type": "odrl:Agreement",
+        "@id": "7ed8c7b0-3ecb-45bf-b80e-dd27f3461772",
+        "odrl:target": "e38a0f92-4ee8-436c-a535-0f9cdad4c3c8",
+        "dspace:timestamp": "2026-08-11T17:50:10Z",
+        "odrl:assignee": "did:web:consumer-idhub:user:consumer",
+        "odrl:assigner": "did:web:provider-idhub:user:provider"
+    },
+    "dspace:callbackAddress": "http://dsp-native-basyx:8090/dsp"
+}
+2026-08-11T17:50:29.349Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-23] o.f.l.c.e.p.s.h.SendTransferStartedTask  : Error sending STARTED MESSAGE to http://consumer-controlplane:9020/dsp/transfers/5e356246-7d3a-4d6e-8a6f-782286400a82/start for f9d270c5-f90f-49e7-a423-553c5005b944
+2026-08-11T17:50:29.350Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-23] o.f.l.c.e.p.s.h.SendTransferStartedTask  : Status code: 500 INTERNAL_SERVER_ERROR
+2026-08-11T17:50:29.350Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-23] o.f.l.c.e.p.s.h.SendTransferStartedTask  : Body: {"@context":{"@vocab":"https://w3id.org/edc/v0.0.1/ns/","edc":"https://w3id.org/edc/v0.0.1/ns/","dcat":"http://www.w3.org/ns/dcat#","dct":"http://purl.org/dc/terms/","odrl":"http://www.w3.org/ns/odrl/2/","dspace":"https://w3id.org/dspace/v0.8/"},"@type":"dspace:TransferStartMessage","dspace:consumerPid":"5e356246-7d3a-4d6e-8a6f-782286400a82","dspace:providerPid":"f9d270c5-f90f-49e7-a423-553c5005b944","dspace:dataAddress":{"@type":"dspace:DataAddress","dspace:endpointType":"https://w3id.org/idsa/v4.1/HTTP","dspace:endpoint":"http://dsp-native-basyx:8090/dsp/data-access/e38a0f92-4ee8-436c-a535-0f9cdad4c3c8","dspace:endpointProperties":[{"@type":"dspace:EndpointProperty","dspace:name":"authorization","dspace:value":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaWQ6d2ViOnByb3ZpZGVyLWlkaHViOnVzZXI6cHJvdmlkZXIvc2luZ2xlQXNzZXRSZWFkT25seURhdGFBY2Nlc3NJc3N1ZXIiLCJleHAiOjE3ODY0NzA5MjksImlhdCI6MTc4NjQ3MDYyOSwiZGFkIjoiaHR0cDovL2RzcC1uYXRpdmUtYmFzeXg6ODA5MC9kc3AvZGF0YS1hY2Nlc3MvZTM4YTBmOTItNGVlOC00MzZjLWE1MzUtMGY5Y2RhZDRjM2M4IiwiY2lkIjoiMGU4YWUwZGUtNzRkYS00OGIyLWE3MjYtYWMzYjM5OTM0MjhmIn0.8UPPCX8L-tlYiIA6re0aDi6QAYpd58NpV_VIpXKW8_Y"},{"@type":"dspace:EndpointProperty","dspace:name":"authType","dspace:value":"Bearer"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/authorization","dspace:value":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaWQ6d2ViOnByb3ZpZGVyLWlkaHViOnVzZXI6cHJvdmlkZXIvc2luZ2xlQXNzZXRSZWFkT25seURhdGFBY2Nlc3NJc3N1ZXIiLCJleHAiOjE3ODY0NzA5MjksImlhdCI6MTc4NjQ3MDYyOSwiZGFkIjoiaHR0cDovL2RzcC1uYXRpdmUtYmFzeXg6ODA5MC9kc3AvZGF0YS1hY2Nlc3MvZTM4YTBmOTItNGVlOC00MzZjLWE1MzUtMGY5Y2RhZDRjM2M4IiwiY2lkIjoiMGU4YWUwZGUtNzRkYS00OGIyLWE3MjYtYWMzYjM5OTM0MjhmIn0.8UPPCX8L-tlYiIA6re0aDi6QAYpd58NpV_VIpXKW8_Y"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/endpoint","dspace:value":"http://dsp-native-basyx:8090/dsp/data-access/e38a0f92-4ee8-436c-a535-0f9cdad4c3c8"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/authType","dspace:value":"Bearer"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/refreshToken","dspace:value":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaWQ6d2ViOnByb3ZpZGVyLWlkaHViOnVzZXI6cHJvdmlkZXIvc2luZ2xlQXNzZXRSZWFkT25seURhdGFBY2Nlc3NJc3N1ZXIiLCJzdWIiOiJkaWQ6d2ViOmNvbnN1bWVyLWlkaHViOnVzZXI6Y29uc3VtZXIiLCJleHAiOjE3ODY0NzI0MjksImlhdCI6MTc4NjQ3MDYyOSwidG9rZW4iOiJleUpoYkdjaU9pSklVekkxTmlKOS5leUpwYzNNaU9pSmthV1E2ZDJWaU9uQnliM1pwWkdWeUxXbGthSFZpT25WelpYSTZjSEp2ZG1sa1pYSXZjMmx1WjJ4bFFYTnpaWFJTWldGa1QyNXNlVVJoZEdGQlkyTmxjM05KYzNOMVpYSWlMQ0psZUhBaU9qRTNPRFkwTnpBNU1qa3NJbWxoZENJNk1UYzROalEzTURZeU9Td2laR0ZrSWpvaWFIUjBjRG92TDJSemNDMXVZWFJwZG1VdFltRnplWGc2T0RBNU1DOWtjM0F2WkdGMFlTMWhZMk5sYzNNdlpUTTRZVEJtT1RJdE5HVmxPQzAwTXpaakxXRTFNelV0TUdZNVkyUmhaRFJqTTJNNElpd2lZMmxrSWpvaU1HVTRZV1V3WkdVdE56UmtZUzAwT0dJeUxXRTNNall0WVdNellqTTVPVE0wTWpobUluMC44VVBQQ1g4TC10bFlpSUE2cmUwYURpNlFBWXBkNThOcFZfVklwWEtXOF9ZIn0.t7DUFiae_dI_7ThiUbpDZI7XElQTsJoiPepmc8MTzxk"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/expiresIn","dspace:value":"300"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/refreshEndpoint","dspace:value":"http://dsp-native-basyx:8090/dsp/authorization/refresh"}]}}
+2026-08-11T17:51:00.323Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-24] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Error sending AGREED MESSAGE to http://consumer-controlplane:9020/dsp/negotiations/c68b8a84-7128-405d-a5bd-68a4e1ebea0f/agreement for 98ef9bc6-dbcf-4992-a4c8-8dabf46efc30
+2026-08-11T17:51:00.323Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-24] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Status code: 500 INTERNAL_SERVER_ERROR
+2026-08-11T17:51:00.324Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-24] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Response from consumer
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1"/>
+<title>Error 500 Internal Server Error</title>
+</head>
+<body>
+<h2>HTTP ERROR 500 Internal Server Error</h2>
+<table>
+<tr><th>URI:</th><td>http://consumer-controlplane:9020/dsp/negotiations/c68b8a84-7128-405d-a5bd-68a4e1ebea0f/agreement</td></tr>
+<tr><th>STATUS:</th><td>500</td></tr>
+<tr><th>MESSAGE:</th><td>Internal Server Error</td></tr>
+</table>
+
+</body>
+</html>
+
+2026-08-11T17:51:00.324Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-24] o.f.l.c.e.p.s.h.SendContractAgreedTask   : As bytes: [60, 104, 116, 109, 108, 62, 10, 60, 104, 101, 97, 100, 62, 10, 60, 109, 101, 116, 97, 32, 104, 116, 116, 112, 45, 101, 113, 117, 105, 118, 61, 34, 67, 111, 110, 116, 101, 110, 116, 45, 84, 121, 112, 101, 34, 32, 99, 111, 110, 116, 101, 110, 116, 61, 34, 116, 101, 120, 116, 47, 104, 116, 109, 108, 59, 99, 104, 97, 114, 115, 101, 116, 61, 73, 83, 79, 45, 56, 56, 53, 57, 45, 49, 34, 47, 62, 10, 60, 116, 105, 116, 108, 101, 62, 69, 114, 114, 111, 114, 32, 53, 48, 48, 32, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 116, 105, 116, 108, 101, 62, 10, 60, 47, 104, 101, 97, 100, 62, 10, 60, 98, 111, 100, 121, 62, 10, 60, 104, 50, 62, 72, 84, 84, 80, 32, 69, 82, 82, 79, 82, 32, 53, 48, 48, 32, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 104, 50, 62, 10, 60, 116, 97, 98, 108, 101, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 85, 82, 73, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 104, 116, 116, 112, 58, 47, 47, 99, 111, 110, 115, 117, 109, 101, 114, 45, 99, 111, 110, 116, 114, 111, 108, 112, 108, 97, 110, 101, 58, 57, 48, 50, 48, 47, 100, 115, 112, 47, 110, 101, 103, 111, 116, 105, 97, 116, 105, 111, 110, 115, 47, 99, 54, 56, 98, 56, 97, 56, 52, 45, 55, 49, 50, 56, 45, 52, 48, 53, 100, 45, 97, 53, 98, 100, 45, 54, 56, 97, 52, 101, 49, 101, 98, 101, 97, 48, 102, 47, 97, 103, 114, 101, 101, 109, 101, 110, 116, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 83, 84, 65, 84, 85, 83, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 53, 48, 48, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 77, 69, 83, 83, 65, 71, 69, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 47, 116, 97, 98, 108, 101, 62, 10, 10, 60, 47, 98, 111, 100, 121, 62, 10, 60, 47, 104, 116, 109, 108, 62, 10]
+2026-08-11T17:51:00.325Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-24] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Body: 
+{
+    "@context": {
+        "@vocab": "https://w3id.org/edc/v0.0.1/ns/",
+        "edc": "https://w3id.org/edc/v0.0.1/ns/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "dct": "http://purl.org/dc/terms/",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "dspace": "https://w3id.org/dspace/v0.8/"
+    },
+    "@type": "dspace:ContractAgreementMessage",
+    "dspace:consumerPid": "c68b8a84-7128-405d-a5bd-68a4e1ebea0f",
+    "dspace:providerPid": "98ef9bc6-dbcf-4992-a4c8-8dabf46efc30",
+    "dspace:agreement": {
+        "@type": "odrl:Agreement",
+        "@id": "2384f6b6-5659-4ea3-81e6-b9110dde6d4b",
+        "odrl:target": "e38a0f92-4ee8-436c-a535-0f9cdad4c3c8",
+        "dspace:timestamp": "2026-08-11T17:51:00Z",
+        "odrl:assignee": "did:web:consumer-idhub:user:consumer",
+        "odrl:assigner": "did:web:provider-idhub:user:provider"
+    },
+    "dspace:callbackAddress": "http://dsp-native-basyx:8090/dsp"
+}
+2026-08-11T17:52:05.083Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-24] o.f.l.c.e.p.s.h.SendTransferStartedTask  : Error sending STARTED MESSAGE to http://consumer-controlplane:9020/dsp/transfers/b45fec9d-66fa-499d-89c8-e423a02186a2/start for b78b0fae-20b6-4503-b499-ccbaa4daa564
+2026-08-11T17:52:05.084Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-24] o.f.l.c.e.p.s.h.SendTransferStartedTask  : Status code: 500 INTERNAL_SERVER_ERROR
+2026-08-11T17:52:05.084Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-24] o.f.l.c.e.p.s.h.SendTransferStartedTask  : Body: {"@context":{"@vocab":"https://w3id.org/edc/v0.0.1/ns/","edc":"https://w3id.org/edc/v0.0.1/ns/","dcat":"http://www.w3.org/ns/dcat#","dct":"http://purl.org/dc/terms/","odrl":"http://www.w3.org/ns/odrl/2/","dspace":"https://w3id.org/dspace/v0.8/"},"@type":"dspace:TransferStartMessage","dspace:consumerPid":"b45fec9d-66fa-499d-89c8-e423a02186a2","dspace:providerPid":"b78b0fae-20b6-4503-b499-ccbaa4daa564","dspace:dataAddress":{"@type":"dspace:DataAddress","dspace:endpointType":"https://w3id.org/idsa/v4.1/HTTP","dspace:endpoint":"http://dsp-native-basyx:8090/dsp/data-access/e38a0f92-4ee8-436c-a535-0f9cdad4c3c8","dspace:endpointProperties":[{"@type":"dspace:EndpointProperty","dspace:name":"authorization","dspace:value":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaWQ6d2ViOnByb3ZpZGVyLWlkaHViOnVzZXI6cHJvdmlkZXIvc2luZ2xlQXNzZXRSZWFkT25seURhdGFBY2Nlc3NJc3N1ZXIiLCJleHAiOjE3ODY0NzEwMjUsImlhdCI6MTc4NjQ3MDcyNSwiZGFkIjoiaHR0cDovL2RzcC1uYXRpdmUtYmFzeXg6ODA5MC9kc3AvZGF0YS1hY2Nlc3MvZTM4YTBmOTItNGVlOC00MzZjLWE1MzUtMGY5Y2RhZDRjM2M4IiwiY2lkIjoiODQ5ZjBjMTctOWVkZC00ZTE0LTlmNjAtZTFhMjM2MTFkNzE3In0.jBAU3123QhaJGtQhjWSx21QMYH4DbWsAgznBQzxdDOg"},{"@type":"dspace:EndpointProperty","dspace:name":"authType","dspace:value":"Bearer"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/authorization","dspace:value":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaWQ6d2ViOnByb3ZpZGVyLWlkaHViOnVzZXI6cHJvdmlkZXIvc2luZ2xlQXNzZXRSZWFkT25seURhdGFBY2Nlc3NJc3N1ZXIiLCJleHAiOjE3ODY0NzEwMjUsImlhdCI6MTc4NjQ3MDcyNSwiZGFkIjoiaHR0cDovL2RzcC1uYXRpdmUtYmFzeXg6ODA5MC9kc3AvZGF0YS1hY2Nlc3MvZTM4YTBmOTItNGVlOC00MzZjLWE1MzUtMGY5Y2RhZDRjM2M4IiwiY2lkIjoiODQ5ZjBjMTctOWVkZC00ZTE0LTlmNjAtZTFhMjM2MTFkNzE3In0.jBAU3123QhaJGtQhjWSx21QMYH4DbWsAgznBQzxdDOg"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/endpoint","dspace:value":"http://dsp-native-basyx:8090/dsp/data-access/e38a0f92-4ee8-436c-a535-0f9cdad4c3c8"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/authType","dspace:value":"Bearer"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/refreshToken","dspace:value":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaWQ6d2ViOnByb3ZpZGVyLWlkaHViOnVzZXI6cHJvdmlkZXIvc2luZ2xlQXNzZXRSZWFkT25seURhdGFBY2Nlc3NJc3N1ZXIiLCJzdWIiOiJkaWQ6d2ViOmNvbnN1bWVyLWlkaHViOnVzZXI6Y29uc3VtZXIiLCJleHAiOjE3ODY0NzI1MjUsImlhdCI6MTc4NjQ3MDcyNSwidG9rZW4iOiJleUpoYkdjaU9pSklVekkxTmlKOS5leUpwYzNNaU9pSmthV1E2ZDJWaU9uQnliM1pwWkdWeUxXbGthSFZpT25WelpYSTZjSEp2ZG1sa1pYSXZjMmx1WjJ4bFFYTnpaWFJTWldGa1QyNXNlVVJoZEdGQlkyTmxjM05KYzNOMVpYSWlMQ0psZUhBaU9qRTNPRFkwTnpFd01qVXNJbWxoZENJNk1UYzROalEzTURjeU5Td2laR0ZrSWpvaWFIUjBjRG92TDJSemNDMXVZWFJwZG1VdFltRnplWGc2T0RBNU1DOWtjM0F2WkdGMFlTMWhZMk5sYzNNdlpUTTRZVEJtT1RJdE5HVmxPQzAwTXpaakxXRTFNelV0TUdZNVkyUmhaRFJqTTJNNElpd2lZMmxrSWpvaU9EUTVaakJqTVRjdE9XVmtaQzAwWlRFMExUbG1OakF0WlRGaE1qTTJNVEZrTnpFM0luMC5qQkFVMzEyM1FoYUpHdFFoaldTeDIxUU1ZSDREYldzQWd6bkJRenhkRE9nIn0.z5rGg1D1NtRxgK9idcYg-9obUeGAzROxOjeDQhgIbI4"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/expiresIn","dspace:value":"300"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/refreshEndpoint","dspace:value":"http://dsp-native-basyx:8090/dsp/authorization/refresh"}]}}

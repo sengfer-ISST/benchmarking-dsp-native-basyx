@@ -1,0 +1,356 @@
+2026-08-11T17:21:11.177Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-13] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Error sending AGREED MESSAGE to http://consumer-controlplane:9020/dsp/negotiations/b22b407b-0bfe-4896-a017-5357b3f06ee9/agreement for f6db6b66-8d8b-40f6-820b-bb9541c93e09
+2026-08-11T17:21:11.177Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-13] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Status code: 500 INTERNAL_SERVER_ERROR
+2026-08-11T17:21:11.208Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-13] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Response from consumer
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1"/>
+<title>Error 500 Internal Server Error</title>
+</head>
+<body>
+<h2>HTTP ERROR 500 Internal Server Error</h2>
+<table>
+<tr><th>URI:</th><td>http://consumer-controlplane:9020/dsp/negotiations/b22b407b-0bfe-4896-a017-5357b3f06ee9/agreement</td></tr>
+<tr><th>STATUS:</th><td>500</td></tr>
+<tr><th>MESSAGE:</th><td>Internal Server Error</td></tr>
+</table>
+
+</body>
+</html>
+
+2026-08-11T17:21:11.208Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-13] o.f.l.c.e.p.s.h.SendContractAgreedTask   : As bytes: [60, 104, 116, 109, 108, 62, 10, 60, 104, 101, 97, 100, 62, 10, 60, 109, 101, 116, 97, 32, 104, 116, 116, 112, 45, 101, 113, 117, 105, 118, 61, 34, 67, 111, 110, 116, 101, 110, 116, 45, 84, 121, 112, 101, 34, 32, 99, 111, 110, 116, 101, 110, 116, 61, 34, 116, 101, 120, 116, 47, 104, 116, 109, 108, 59, 99, 104, 97, 114, 115, 101, 116, 61, 73, 83, 79, 45, 56, 56, 53, 57, 45, 49, 34, 47, 62, 10, 60, 116, 105, 116, 108, 101, 62, 69, 114, 114, 111, 114, 32, 53, 48, 48, 32, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 116, 105, 116, 108, 101, 62, 10, 60, 47, 104, 101, 97, 100, 62, 10, 60, 98, 111, 100, 121, 62, 10, 60, 104, 50, 62, 72, 84, 84, 80, 32, 69, 82, 82, 79, 82, 32, 53, 48, 48, 32, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 104, 50, 62, 10, 60, 116, 97, 98, 108, 101, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 85, 82, 73, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 104, 116, 116, 112, 58, 47, 47, 99, 111, 110, 115, 117, 109, 101, 114, 45, 99, 111, 110, 116, 114, 111, 108, 112, 108, 97, 110, 101, 58, 57, 48, 50, 48, 47, 100, 115, 112, 47, 110, 101, 103, 111, 116, 105, 97, 116, 105, 111, 110, 115, 47, 98, 50, 50, 98, 52, 48, 55, 98, 45, 48, 98, 102, 101, 45, 52, 56, 57, 54, 45, 97, 48, 49, 55, 45, 53, 51, 53, 55, 98, 51, 102, 48, 54, 101, 101, 57, 47, 97, 103, 114, 101, 101, 109, 101, 110, 116, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 83, 84, 65, 84, 85, 83, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 53, 48, 48, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 77, 69, 83, 83, 65, 71, 69, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 47, 116, 97, 98, 108, 101, 62, 10, 10, 60, 47, 98, 111, 100, 121, 62, 10, 60, 47, 104, 116, 109, 108, 62, 10]
+2026-08-11T17:21:11.209Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-13] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Body: 
+{
+    "@context": {
+        "@vocab": "https://w3id.org/edc/v0.0.1/ns/",
+        "edc": "https://w3id.org/edc/v0.0.1/ns/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "dct": "http://purl.org/dc/terms/",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "dspace": "https://w3id.org/dspace/v0.8/"
+    },
+    "@type": "dspace:ContractAgreementMessage",
+    "dspace:consumerPid": "b22b407b-0bfe-4896-a017-5357b3f06ee9",
+    "dspace:providerPid": "f6db6b66-8d8b-40f6-820b-bb9541c93e09",
+    "dspace:agreement": {
+        "@type": "odrl:Agreement",
+        "@id": "bab2751f-54b5-4c4d-b79b-e46538c04538",
+        "odrl:target": "e38a0f92-4ee8-436c-a535-0f9cdad4c3c8",
+        "dspace:timestamp": "2026-08-11T17:21:11Z",
+        "odrl:assignee": "did:web:consumer-idhub:user:consumer",
+        "odrl:assigner": "did:web:provider-idhub:user:provider"
+    },
+    "dspace:callbackAddress": "http://dsp-native-basyx:8090/dsp"
+}
+2026-08-11T17:21:28.499Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-13] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Error sending AGREED MESSAGE to http://consumer-controlplane:9020/dsp/negotiations/fab46364-1158-4322-89ae-3899f6588338/agreement for a4297e30-06f8-4456-8a0a-9fdbe536f7d5
+2026-08-11T17:21:28.499Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-13] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Status code: 500 INTERNAL_SERVER_ERROR
+2026-08-11T17:21:28.501Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-13] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Response from consumer
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1"/>
+<title>Error 500 Internal Server Error</title>
+</head>
+<body>
+<h2>HTTP ERROR 500 Internal Server Error</h2>
+<table>
+<tr><th>URI:</th><td>http://consumer-controlplane:9020/dsp/negotiations/fab46364-1158-4322-89ae-3899f6588338/agreement</td></tr>
+<tr><th>STATUS:</th><td>500</td></tr>
+<tr><th>MESSAGE:</th><td>Internal Server Error</td></tr>
+</table>
+
+</body>
+</html>
+
+2026-08-11T17:21:28.501Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-13] o.f.l.c.e.p.s.h.SendContractAgreedTask   : As bytes: [60, 104, 116, 109, 108, 62, 10, 60, 104, 101, 97, 100, 62, 10, 60, 109, 101, 116, 97, 32, 104, 116, 116, 112, 45, 101, 113, 117, 105, 118, 61, 34, 67, 111, 110, 116, 101, 110, 116, 45, 84, 121, 112, 101, 34, 32, 99, 111, 110, 116, 101, 110, 116, 61, 34, 116, 101, 120, 116, 47, 104, 116, 109, 108, 59, 99, 104, 97, 114, 115, 101, 116, 61, 73, 83, 79, 45, 56, 56, 53, 57, 45, 49, 34, 47, 62, 10, 60, 116, 105, 116, 108, 101, 62, 69, 114, 114, 111, 114, 32, 53, 48, 48, 32, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 116, 105, 116, 108, 101, 62, 10, 60, 47, 104, 101, 97, 100, 62, 10, 60, 98, 111, 100, 121, 62, 10, 60, 104, 50, 62, 72, 84, 84, 80, 32, 69, 82, 82, 79, 82, 32, 53, 48, 48, 32, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 104, 50, 62, 10, 60, 116, 97, 98, 108, 101, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 85, 82, 73, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 104, 116, 116, 112, 58, 47, 47, 99, 111, 110, 115, 117, 109, 101, 114, 45, 99, 111, 110, 116, 114, 111, 108, 112, 108, 97, 110, 101, 58, 57, 48, 50, 48, 47, 100, 115, 112, 47, 110, 101, 103, 111, 116, 105, 97, 116, 105, 111, 110, 115, 47, 102, 97, 98, 52, 54, 51, 54, 52, 45, 49, 49, 53, 56, 45, 52, 51, 50, 50, 45, 56, 57, 97, 101, 45, 51, 56, 57, 57, 102, 54, 53, 56, 56, 51, 51, 56, 47, 97, 103, 114, 101, 101, 109, 101, 110, 116, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 83, 84, 65, 84, 85, 83, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 53, 48, 48, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 77, 69, 83, 83, 65, 71, 69, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 47, 116, 97, 98, 108, 101, 62, 10, 10, 60, 47, 98, 111, 100, 121, 62, 10, 60, 47, 104, 116, 109, 108, 62, 10]
+2026-08-11T17:21:28.502Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-13] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Body: 
+{
+    "@context": {
+        "@vocab": "https://w3id.org/edc/v0.0.1/ns/",
+        "edc": "https://w3id.org/edc/v0.0.1/ns/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "dct": "http://purl.org/dc/terms/",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "dspace": "https://w3id.org/dspace/v0.8/"
+    },
+    "@type": "dspace:ContractAgreementMessage",
+    "dspace:consumerPid": "fab46364-1158-4322-89ae-3899f6588338",
+    "dspace:providerPid": "a4297e30-06f8-4456-8a0a-9fdbe536f7d5",
+    "dspace:agreement": {
+        "@type": "odrl:Agreement",
+        "@id": "a8dc0d20-bff4-4865-8091-c69cf465d7ba",
+        "odrl:target": "e38a0f92-4ee8-436c-a535-0f9cdad4c3c8",
+        "dspace:timestamp": "2026-08-11T17:21:28Z",
+        "odrl:assignee": "did:web:consumer-idhub:user:consumer",
+        "odrl:assigner": "did:web:provider-idhub:user:provider"
+    },
+    "dspace:callbackAddress": "http://dsp-native-basyx:8090/dsp"
+}
+2026-08-11T17:21:46.993Z  WARN 1 --- [BasyxStarterApp] [pool-7-thread-9] o.f.l.c.e.p.s.h.SendTransferStartedTask  : Error sending STARTED MESSAGE to http://consumer-controlplane:9020/dsp/transfers/0af26bb6-efd1-4e09-92d4-ca547aba1295/start for d4528ad4-40b3-4a22-b924-2e45caecba13
+2026-08-11T17:21:46.994Z  WARN 1 --- [BasyxStarterApp] [pool-7-thread-9] o.f.l.c.e.p.s.h.SendTransferStartedTask  : Status code: 500 INTERNAL_SERVER_ERROR
+2026-08-11T17:21:46.994Z  WARN 1 --- [BasyxStarterApp] [pool-7-thread-9] o.f.l.c.e.p.s.h.SendTransferStartedTask  : Body: {"@context":{"@vocab":"https://w3id.org/edc/v0.0.1/ns/","edc":"https://w3id.org/edc/v0.0.1/ns/","dcat":"http://www.w3.org/ns/dcat#","dct":"http://purl.org/dc/terms/","odrl":"http://www.w3.org/ns/odrl/2/","dspace":"https://w3id.org/dspace/v0.8/"},"@type":"dspace:TransferStartMessage","dspace:consumerPid":"0af26bb6-efd1-4e09-92d4-ca547aba1295","dspace:providerPid":"d4528ad4-40b3-4a22-b924-2e45caecba13","dspace:dataAddress":{"@type":"dspace:DataAddress","dspace:endpointType":"https://w3id.org/idsa/v4.1/HTTP","dspace:endpoint":"http://dsp-native-basyx:8090/dsp/data-access/e38a0f92-4ee8-436c-a535-0f9cdad4c3c8","dspace:endpointProperties":[{"@type":"dspace:EndpointProperty","dspace:name":"authorization","dspace:value":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaWQ6d2ViOnByb3ZpZGVyLWlkaHViOnVzZXI6cHJvdmlkZXIvc2luZ2xlQXNzZXRSZWFkT25seURhdGFBY2Nlc3NJc3N1ZXIiLCJleHAiOjE3ODY0NjkyMDYsImlhdCI6MTc4NjQ2ODkwNiwiZGFkIjoiaHR0cDovL2RzcC1uYXRpdmUtYmFzeXg6ODA5MC9kc3AvZGF0YS1hY2Nlc3MvZTM4YTBmOTItNGVlOC00MzZjLWE1MzUtMGY5Y2RhZDRjM2M4IiwiY2lkIjoiZmRiYzZmYjItYzU3Yy00Mjg2LWExODUtNDcyNmYzZTQzNzYzIn0.keLospfkXM0sqz27gJMXo5FLCzGF66jZOXeG55A3I7k"},{"@type":"dspace:EndpointProperty","dspace:name":"authType","dspace:value":"Bearer"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/authorization","dspace:value":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaWQ6d2ViOnByb3ZpZGVyLWlkaHViOnVzZXI6cHJvdmlkZXIvc2luZ2xlQXNzZXRSZWFkT25seURhdGFBY2Nlc3NJc3N1ZXIiLCJleHAiOjE3ODY0NjkyMDYsImlhdCI6MTc4NjQ2ODkwNiwiZGFkIjoiaHR0cDovL2RzcC1uYXRpdmUtYmFzeXg6ODA5MC9kc3AvZGF0YS1hY2Nlc3MvZTM4YTBmOTItNGVlOC00MzZjLWE1MzUtMGY5Y2RhZDRjM2M4IiwiY2lkIjoiZmRiYzZmYjItYzU3Yy00Mjg2LWExODUtNDcyNmYzZTQzNzYzIn0.keLospfkXM0sqz27gJMXo5FLCzGF66jZOXeG55A3I7k"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/endpoint","dspace:value":"http://dsp-native-basyx:8090/dsp/data-access/e38a0f92-4ee8-436c-a535-0f9cdad4c3c8"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/authType","dspace:value":"Bearer"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/refreshToken","dspace:value":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaWQ6d2ViOnByb3ZpZGVyLWlkaHViOnVzZXI6cHJvdmlkZXIvc2luZ2xlQXNzZXRSZWFkT25seURhdGFBY2Nlc3NJc3N1ZXIiLCJzdWIiOiJkaWQ6d2ViOmNvbnN1bWVyLWlkaHViOnVzZXI6Y29uc3VtZXIiLCJleHAiOjE3ODY0NzA3MDYsImlhdCI6MTc4NjQ2ODkwNiwidG9rZW4iOiJleUpoYkdjaU9pSklVekkxTmlKOS5leUpwYzNNaU9pSmthV1E2ZDJWaU9uQnliM1pwWkdWeUxXbGthSFZpT25WelpYSTZjSEp2ZG1sa1pYSXZjMmx1WjJ4bFFYTnpaWFJTWldGa1QyNXNlVVJoZEdGQlkyTmxjM05KYzNOMVpYSWlMQ0psZUhBaU9qRTNPRFkwTmpreU1EWXNJbWxoZENJNk1UYzROalEyT0Rrd05pd2laR0ZrSWpvaWFIUjBjRG92TDJSemNDMXVZWFJwZG1VdFltRnplWGc2T0RBNU1DOWtjM0F2WkdGMFlTMWhZMk5sYzNNdlpUTTRZVEJtT1RJdE5HVmxPQzAwTXpaakxXRTFNelV0TUdZNVkyUmhaRFJqTTJNNElpd2lZMmxrSWpvaVptUmlZelptWWpJdFl6VTNZeTAwTWpnMkxXRXhPRFV0TkRjeU5tWXpaVFF6TnpZekluMC5rZUxvc3Bma1hNMHNxejI3Z0pNWG81RkxDekdGNjZqWk9YZUc1NUEzSTdrIn0.l8lEW9wYLvFw7LdJ08ZPD9bT_PyNabXsurFDPJXuMA0"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/expiresIn","dspace:value":"300"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/refreshEndpoint","dspace:value":"http://dsp-native-basyx:8090/dsp/authorization/refresh"}]}}
+2026-08-11T17:22:59.051Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-13] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Error sending AGREED MESSAGE to http://consumer-controlplane:9020/dsp/negotiations/e34419fb-802f-47b6-ba82-d76dd9c8ff64/agreement for 4a7df9e6-4447-49d6-9610-4529abf775d9
+2026-08-11T17:22:59.051Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-13] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Status code: 500 INTERNAL_SERVER_ERROR
+2026-08-11T17:22:59.052Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-13] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Response from consumer
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1"/>
+<title>Error 500 Internal Server Error</title>
+</head>
+<body>
+<h2>HTTP ERROR 500 Internal Server Error</h2>
+<table>
+<tr><th>URI:</th><td>http://consumer-controlplane:9020/dsp/negotiations/e34419fb-802f-47b6-ba82-d76dd9c8ff64/agreement</td></tr>
+<tr><th>STATUS:</th><td>500</td></tr>
+<tr><th>MESSAGE:</th><td>Internal Server Error</td></tr>
+</table>
+
+</body>
+</html>
+
+2026-08-11T17:22:59.053Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-13] o.f.l.c.e.p.s.h.SendContractAgreedTask   : As bytes: [60, 104, 116, 109, 108, 62, 10, 60, 104, 101, 97, 100, 62, 10, 60, 109, 101, 116, 97, 32, 104, 116, 116, 112, 45, 101, 113, 117, 105, 118, 61, 34, 67, 111, 110, 116, 101, 110, 116, 45, 84, 121, 112, 101, 34, 32, 99, 111, 110, 116, 101, 110, 116, 61, 34, 116, 101, 120, 116, 47, 104, 116, 109, 108, 59, 99, 104, 97, 114, 115, 101, 116, 61, 73, 83, 79, 45, 56, 56, 53, 57, 45, 49, 34, 47, 62, 10, 60, 116, 105, 116, 108, 101, 62, 69, 114, 114, 111, 114, 32, 53, 48, 48, 32, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 116, 105, 116, 108, 101, 62, 10, 60, 47, 104, 101, 97, 100, 62, 10, 60, 98, 111, 100, 121, 62, 10, 60, 104, 50, 62, 72, 84, 84, 80, 32, 69, 82, 82, 79, 82, 32, 53, 48, 48, 32, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 104, 50, 62, 10, 60, 116, 97, 98, 108, 101, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 85, 82, 73, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 104, 116, 116, 112, 58, 47, 47, 99, 111, 110, 115, 117, 109, 101, 114, 45, 99, 111, 110, 116, 114, 111, 108, 112, 108, 97, 110, 101, 58, 57, 48, 50, 48, 47, 100, 115, 112, 47, 110, 101, 103, 111, 116, 105, 97, 116, 105, 111, 110, 115, 47, 101, 51, 52, 52, 49, 57, 102, 98, 45, 56, 48, 50, 102, 45, 52, 55, 98, 54, 45, 98, 97, 56, 50, 45, 100, 55, 54, 100, 100, 57, 99, 56, 102, 102, 54, 52, 47, 97, 103, 114, 101, 101, 109, 101, 110, 116, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 83, 84, 65, 84, 85, 83, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 53, 48, 48, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 77, 69, 83, 83, 65, 71, 69, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 47, 116, 97, 98, 108, 101, 62, 10, 10, 60, 47, 98, 111, 100, 121, 62, 10, 60, 47, 104, 116, 109, 108, 62, 10]
+2026-08-11T17:22:59.053Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-13] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Body: 
+{
+    "@context": {
+        "@vocab": "https://w3id.org/edc/v0.0.1/ns/",
+        "edc": "https://w3id.org/edc/v0.0.1/ns/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "dct": "http://purl.org/dc/terms/",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "dspace": "https://w3id.org/dspace/v0.8/"
+    },
+    "@type": "dspace:ContractAgreementMessage",
+    "dspace:consumerPid": "e34419fb-802f-47b6-ba82-d76dd9c8ff64",
+    "dspace:providerPid": "4a7df9e6-4447-49d6-9610-4529abf775d9",
+    "dspace:agreement": {
+        "@type": "odrl:Agreement",
+        "@id": "0dc0f581-e4e9-4fa6-81c9-5723bb8ad2dc",
+        "odrl:target": "e38a0f92-4ee8-436c-a535-0f9cdad4c3c8",
+        "dspace:timestamp": "2026-08-11T17:22:58Z",
+        "odrl:assignee": "did:web:consumer-idhub:user:consumer",
+        "odrl:assigner": "did:web:provider-idhub:user:provider"
+    },
+    "dspace:callbackAddress": "http://dsp-native-basyx:8090/dsp"
+}
+2026-08-11T17:23:02.239Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-13] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Error sending AGREED MESSAGE to http://consumer-controlplane:9020/dsp/negotiations/f58ee916-85aa-4cfc-8a1a-3dab4cfba12b/agreement for e16e803a-ea36-47f1-9cac-757e8d8c95ae
+2026-08-11T17:23:02.240Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-13] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Status code: 500 INTERNAL_SERVER_ERROR
+2026-08-11T17:23:02.241Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-13] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Response from consumer
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1"/>
+<title>Error 500 Internal Server Error</title>
+</head>
+<body>
+<h2>HTTP ERROR 500 Internal Server Error</h2>
+<table>
+<tr><th>URI:</th><td>http://consumer-controlplane:9020/dsp/negotiations/f58ee916-85aa-4cfc-8a1a-3dab4cfba12b/agreement</td></tr>
+<tr><th>STATUS:</th><td>500</td></tr>
+<tr><th>MESSAGE:</th><td>Internal Server Error</td></tr>
+</table>
+
+</body>
+</html>
+
+2026-08-11T17:23:02.241Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-13] o.f.l.c.e.p.s.h.SendContractAgreedTask   : As bytes: [60, 104, 116, 109, 108, 62, 10, 60, 104, 101, 97, 100, 62, 10, 60, 109, 101, 116, 97, 32, 104, 116, 116, 112, 45, 101, 113, 117, 105, 118, 61, 34, 67, 111, 110, 116, 101, 110, 116, 45, 84, 121, 112, 101, 34, 32, 99, 111, 110, 116, 101, 110, 116, 61, 34, 116, 101, 120, 116, 47, 104, 116, 109, 108, 59, 99, 104, 97, 114, 115, 101, 116, 61, 73, 83, 79, 45, 56, 56, 53, 57, 45, 49, 34, 47, 62, 10, 60, 116, 105, 116, 108, 101, 62, 69, 114, 114, 111, 114, 32, 53, 48, 48, 32, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 116, 105, 116, 108, 101, 62, 10, 60, 47, 104, 101, 97, 100, 62, 10, 60, 98, 111, 100, 121, 62, 10, 60, 104, 50, 62, 72, 84, 84, 80, 32, 69, 82, 82, 79, 82, 32, 53, 48, 48, 32, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 104, 50, 62, 10, 60, 116, 97, 98, 108, 101, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 85, 82, 73, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 104, 116, 116, 112, 58, 47, 47, 99, 111, 110, 115, 117, 109, 101, 114, 45, 99, 111, 110, 116, 114, 111, 108, 112, 108, 97, 110, 101, 58, 57, 48, 50, 48, 47, 100, 115, 112, 47, 110, 101, 103, 111, 116, 105, 97, 116, 105, 111, 110, 115, 47, 102, 53, 56, 101, 101, 57, 49, 54, 45, 56, 53, 97, 97, 45, 52, 99, 102, 99, 45, 56, 97, 49, 97, 45, 51, 100, 97, 98, 52, 99, 102, 98, 97, 49, 50, 98, 47, 97, 103, 114, 101, 101, 109, 101, 110, 116, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 83, 84, 65, 84, 85, 83, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 53, 48, 48, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 77, 69, 83, 83, 65, 71, 69, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 47, 116, 97, 98, 108, 101, 62, 10, 10, 60, 47, 98, 111, 100, 121, 62, 10, 60, 47, 104, 116, 109, 108, 62, 10]
+2026-08-11T17:23:02.242Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-13] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Body: 
+{
+    "@context": {
+        "@vocab": "https://w3id.org/edc/v0.0.1/ns/",
+        "edc": "https://w3id.org/edc/v0.0.1/ns/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "dct": "http://purl.org/dc/terms/",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "dspace": "https://w3id.org/dspace/v0.8/"
+    },
+    "@type": "dspace:ContractAgreementMessage",
+    "dspace:consumerPid": "f58ee916-85aa-4cfc-8a1a-3dab4cfba12b",
+    "dspace:providerPid": "e16e803a-ea36-47f1-9cac-757e8d8c95ae",
+    "dspace:agreement": {
+        "@type": "odrl:Agreement",
+        "@id": "b02693d3-fef7-444e-8d46-08955bbaf4f2",
+        "odrl:target": "e38a0f92-4ee8-436c-a535-0f9cdad4c3c8",
+        "dspace:timestamp": "2026-08-11T17:23:02Z",
+        "odrl:assignee": "did:web:consumer-idhub:user:consumer",
+        "odrl:assigner": "did:web:provider-idhub:user:provider"
+    },
+    "dspace:callbackAddress": "http://dsp-native-basyx:8090/dsp"
+}
+2026-08-11T17:23:05.450Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-11] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Error sending AGREED MESSAGE to http://consumer-controlplane:9020/dsp/negotiations/5f1394de-a11d-4fe8-9077-df43c760db21/agreement for cdddfebf-9ed1-4cef-8caa-a742392c0119
+2026-08-11T17:23:05.450Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-11] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Status code: 500 INTERNAL_SERVER_ERROR
+2026-08-11T17:23:05.452Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-11] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Response from consumer
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1"/>
+<title>Error 500 Internal Server Error</title>
+</head>
+<body>
+<h2>HTTP ERROR 500 Internal Server Error</h2>
+<table>
+<tr><th>URI:</th><td>http://consumer-controlplane:9020/dsp/negotiations/5f1394de-a11d-4fe8-9077-df43c760db21/agreement</td></tr>
+<tr><th>STATUS:</th><td>500</td></tr>
+<tr><th>MESSAGE:</th><td>Internal Server Error</td></tr>
+</table>
+
+</body>
+</html>
+
+2026-08-11T17:23:05.452Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-11] o.f.l.c.e.p.s.h.SendContractAgreedTask   : As bytes: [60, 104, 116, 109, 108, 62, 10, 60, 104, 101, 97, 100, 62, 10, 60, 109, 101, 116, 97, 32, 104, 116, 116, 112, 45, 101, 113, 117, 105, 118, 61, 34, 67, 111, 110, 116, 101, 110, 116, 45, 84, 121, 112, 101, 34, 32, 99, 111, 110, 116, 101, 110, 116, 61, 34, 116, 101, 120, 116, 47, 104, 116, 109, 108, 59, 99, 104, 97, 114, 115, 101, 116, 61, 73, 83, 79, 45, 56, 56, 53, 57, 45, 49, 34, 47, 62, 10, 60, 116, 105, 116, 108, 101, 62, 69, 114, 114, 111, 114, 32, 53, 48, 48, 32, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 116, 105, 116, 108, 101, 62, 10, 60, 47, 104, 101, 97, 100, 62, 10, 60, 98, 111, 100, 121, 62, 10, 60, 104, 50, 62, 72, 84, 84, 80, 32, 69, 82, 82, 79, 82, 32, 53, 48, 48, 32, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 104, 50, 62, 10, 60, 116, 97, 98, 108, 101, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 85, 82, 73, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 104, 116, 116, 112, 58, 47, 47, 99, 111, 110, 115, 117, 109, 101, 114, 45, 99, 111, 110, 116, 114, 111, 108, 112, 108, 97, 110, 101, 58, 57, 48, 50, 48, 47, 100, 115, 112, 47, 110, 101, 103, 111, 116, 105, 97, 116, 105, 111, 110, 115, 47, 53, 102, 49, 51, 57, 52, 100, 101, 45, 97, 49, 49, 100, 45, 52, 102, 101, 56, 45, 57, 48, 55, 55, 45, 100, 102, 52, 51, 99, 55, 54, 48, 100, 98, 50, 49, 47, 97, 103, 114, 101, 101, 109, 101, 110, 116, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 83, 84, 65, 84, 85, 83, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 53, 48, 48, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 77, 69, 83, 83, 65, 71, 69, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 47, 116, 97, 98, 108, 101, 62, 10, 10, 60, 47, 98, 111, 100, 121, 62, 10, 60, 47, 104, 116, 109, 108, 62, 10]
+2026-08-11T17:23:05.453Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-11] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Body: 
+{
+    "@context": {
+        "@vocab": "https://w3id.org/edc/v0.0.1/ns/",
+        "edc": "https://w3id.org/edc/v0.0.1/ns/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "dct": "http://purl.org/dc/terms/",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "dspace": "https://w3id.org/dspace/v0.8/"
+    },
+    "@type": "dspace:ContractAgreementMessage",
+    "dspace:consumerPid": "5f1394de-a11d-4fe8-9077-df43c760db21",
+    "dspace:providerPid": "cdddfebf-9ed1-4cef-8caa-a742392c0119",
+    "dspace:agreement": {
+        "@type": "odrl:Agreement",
+        "@id": "58d6915a-93aa-484a-8cfa-714cadb4569d",
+        "odrl:target": "e38a0f92-4ee8-436c-a535-0f9cdad4c3c8",
+        "dspace:timestamp": "2026-08-11T17:23:05Z",
+        "odrl:assignee": "did:web:consumer-idhub:user:consumer",
+        "odrl:assigner": "did:web:provider-idhub:user:provider"
+    },
+    "dspace:callbackAddress": "http://dsp-native-basyx:8090/dsp"
+}
+2026-08-11T17:23:18.300Z  WARN 1 --- [BasyxStarterApp] [pool-7-thread-9] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Error sending AGREED MESSAGE to http://consumer-controlplane:9020/dsp/negotiations/a4462791-7422-4a4d-82b1-7028badd2f72/agreement for d755d144-67be-4175-a346-6dfdbf9c2bfe
+2026-08-11T17:23:18.301Z  WARN 1 --- [BasyxStarterApp] [pool-7-thread-9] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Status code: 500 INTERNAL_SERVER_ERROR
+2026-08-11T17:23:18.302Z  WARN 1 --- [BasyxStarterApp] [pool-7-thread-9] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Response from consumer
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1"/>
+<title>Error 500 Internal Server Error</title>
+</head>
+<body>
+<h2>HTTP ERROR 500 Internal Server Error</h2>
+<table>
+<tr><th>URI:</th><td>http://consumer-controlplane:9020/dsp/negotiations/a4462791-7422-4a4d-82b1-7028badd2f72/agreement</td></tr>
+<tr><th>STATUS:</th><td>500</td></tr>
+<tr><th>MESSAGE:</th><td>Internal Server Error</td></tr>
+</table>
+
+</body>
+</html>
+
+2026-08-11T17:23:18.303Z  WARN 1 --- [BasyxStarterApp] [pool-7-thread-9] o.f.l.c.e.p.s.h.SendContractAgreedTask   : As bytes: [60, 104, 116, 109, 108, 62, 10, 60, 104, 101, 97, 100, 62, 10, 60, 109, 101, 116, 97, 32, 104, 116, 116, 112, 45, 101, 113, 117, 105, 118, 61, 34, 67, 111, 110, 116, 101, 110, 116, 45, 84, 121, 112, 101, 34, 32, 99, 111, 110, 116, 101, 110, 116, 61, 34, 116, 101, 120, 116, 47, 104, 116, 109, 108, 59, 99, 104, 97, 114, 115, 101, 116, 61, 73, 83, 79, 45, 56, 56, 53, 57, 45, 49, 34, 47, 62, 10, 60, 116, 105, 116, 108, 101, 62, 69, 114, 114, 111, 114, 32, 53, 48, 48, 32, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 116, 105, 116, 108, 101, 62, 10, 60, 47, 104, 101, 97, 100, 62, 10, 60, 98, 111, 100, 121, 62, 10, 60, 104, 50, 62, 72, 84, 84, 80, 32, 69, 82, 82, 79, 82, 32, 53, 48, 48, 32, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 104, 50, 62, 10, 60, 116, 97, 98, 108, 101, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 85, 82, 73, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 104, 116, 116, 112, 58, 47, 47, 99, 111, 110, 115, 117, 109, 101, 114, 45, 99, 111, 110, 116, 114, 111, 108, 112, 108, 97, 110, 101, 58, 57, 48, 50, 48, 47, 100, 115, 112, 47, 110, 101, 103, 111, 116, 105, 97, 116, 105, 111, 110, 115, 47, 97, 52, 52, 54, 50, 55, 57, 49, 45, 55, 52, 50, 50, 45, 52, 97, 52, 100, 45, 56, 50, 98, 49, 45, 55, 48, 50, 56, 98, 97, 100, 100, 50, 102, 55, 50, 47, 97, 103, 114, 101, 101, 109, 101, 110, 116, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 83, 84, 65, 84, 85, 83, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 53, 48, 48, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 77, 69, 83, 83, 65, 71, 69, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 47, 116, 97, 98, 108, 101, 62, 10, 10, 60, 47, 98, 111, 100, 121, 62, 10, 60, 47, 104, 116, 109, 108, 62, 10]
+2026-08-11T17:23:18.304Z  WARN 1 --- [BasyxStarterApp] [pool-7-thread-9] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Body: 
+{
+    "@context": {
+        "@vocab": "https://w3id.org/edc/v0.0.1/ns/",
+        "edc": "https://w3id.org/edc/v0.0.1/ns/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "dct": "http://purl.org/dc/terms/",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "dspace": "https://w3id.org/dspace/v0.8/"
+    },
+    "@type": "dspace:ContractAgreementMessage",
+    "dspace:consumerPid": "a4462791-7422-4a4d-82b1-7028badd2f72",
+    "dspace:providerPid": "d755d144-67be-4175-a346-6dfdbf9c2bfe",
+    "dspace:agreement": {
+        "@type": "odrl:Agreement",
+        "@id": "5e54c86c-600e-4a31-ae3b-28801d51c4ab",
+        "odrl:target": "e38a0f92-4ee8-436c-a535-0f9cdad4c3c8",
+        "dspace:timestamp": "2026-08-11T17:23:18Z",
+        "odrl:assignee": "did:web:consumer-idhub:user:consumer",
+        "odrl:assigner": "did:web:provider-idhub:user:provider"
+    },
+    "dspace:callbackAddress": "http://dsp-native-basyx:8090/dsp"
+}
+2026-08-11T17:23:22.805Z  WARN 1 --- [BasyxStarterApp] [pool-7-thread-9] .f.l.c.e.p.s.h.SendContractFinalizedTask : Error sending FINALIZED MESSAGE to http://consumer-controlplane:9020/dsp/negotiations/300d1257-a2a5-44c7-a35e-95e40ff7b1ce/events for 219f01f3-64ab-4e31-af08-4dc12d5ccc53
+2026-08-11T17:23:22.805Z  WARN 1 --- [BasyxStarterApp] [pool-7-thread-9] .f.l.c.e.p.s.h.SendContractFinalizedTask : Status code: 500 INTERNAL_SERVER_ERROR
+2026-08-11T17:24:28.110Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-16] .f.l.c.e.p.s.h.SendContractFinalizedTask : Error sending FINALIZED MESSAGE to http://consumer-controlplane:9020/dsp/negotiations/9761d60d-9627-4bb1-8fab-f75e601991b8/events for 0dacd49f-b7ca-40a3-a465-de80fd059ba1
+2026-08-11T17:24:28.110Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-16] .f.l.c.e.p.s.h.SendContractFinalizedTask : Status code: 500 INTERNAL_SERVER_ERROR
+2026-08-11T17:24:28.150Z  WARN 1 --- [BasyxStarterApp] [pool-7-thread-9] o.f.l.c.e.p.s.h.SendTransferStartedTask  : Error sending STARTED MESSAGE to http://consumer-controlplane:9020/dsp/transfers/711608d6-1cb8-4a73-a79d-c8023b9d2ae7/start for 72546d06-a57c-4bb2-bd60-9bc19ee20f40
+2026-08-11T17:24:28.151Z  WARN 1 --- [BasyxStarterApp] [pool-7-thread-9] o.f.l.c.e.p.s.h.SendTransferStartedTask  : Status code: 500 INTERNAL_SERVER_ERROR
+2026-08-11T17:24:28.151Z  WARN 1 --- [BasyxStarterApp] [pool-7-thread-9] o.f.l.c.e.p.s.h.SendTransferStartedTask  : Body: {"@context":{"@vocab":"https://w3id.org/edc/v0.0.1/ns/","edc":"https://w3id.org/edc/v0.0.1/ns/","dcat":"http://www.w3.org/ns/dcat#","dct":"http://purl.org/dc/terms/","odrl":"http://www.w3.org/ns/odrl/2/","dspace":"https://w3id.org/dspace/v0.8/"},"@type":"dspace:TransferStartMessage","dspace:consumerPid":"711608d6-1cb8-4a73-a79d-c8023b9d2ae7","dspace:providerPid":"72546d06-a57c-4bb2-bd60-9bc19ee20f40","dspace:dataAddress":{"@type":"dspace:DataAddress","dspace:endpointType":"https://w3id.org/idsa/v4.1/HTTP","dspace:endpoint":"http://dsp-native-basyx:8090/dsp/data-access/e38a0f92-4ee8-436c-a535-0f9cdad4c3c8","dspace:endpointProperties":[{"@type":"dspace:EndpointProperty","dspace:name":"authorization","dspace:value":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaWQ6d2ViOnByb3ZpZGVyLWlkaHViOnVzZXI6cHJvdmlkZXIvc2luZ2xlQXNzZXRSZWFkT25seURhdGFBY2Nlc3NJc3N1ZXIiLCJleHAiOjE3ODY0NjkzNjgsImlhdCI6MTc4NjQ2OTA2OCwiZGFkIjoiaHR0cDovL2RzcC1uYXRpdmUtYmFzeXg6ODA5MC9kc3AvZGF0YS1hY2Nlc3MvZTM4YTBmOTItNGVlOC00MzZjLWE1MzUtMGY5Y2RhZDRjM2M4IiwiY2lkIjoiNjU4ZjczNGItMzk4Ny00MzU3LTg5ZjUtZDQ1YTllNWMwYWQxIn0.DxEwu-hq2w7GiN58t38nkPmXI3JTDJrscLO85Esqzf4"},{"@type":"dspace:EndpointProperty","dspace:name":"authType","dspace:value":"Bearer"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/authorization","dspace:value":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaWQ6d2ViOnByb3ZpZGVyLWlkaHViOnVzZXI6cHJvdmlkZXIvc2luZ2xlQXNzZXRSZWFkT25seURhdGFBY2Nlc3NJc3N1ZXIiLCJleHAiOjE3ODY0NjkzNjgsImlhdCI6MTc4NjQ2OTA2OCwiZGFkIjoiaHR0cDovL2RzcC1uYXRpdmUtYmFzeXg6ODA5MC9kc3AvZGF0YS1hY2Nlc3MvZTM4YTBmOTItNGVlOC00MzZjLWE1MzUtMGY5Y2RhZDRjM2M4IiwiY2lkIjoiNjU4ZjczNGItMzk4Ny00MzU3LTg5ZjUtZDQ1YTllNWMwYWQxIn0.DxEwu-hq2w7GiN58t38nkPmXI3JTDJrscLO85Esqzf4"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/endpoint","dspace:value":"http://dsp-native-basyx:8090/dsp/data-access/e38a0f92-4ee8-436c-a535-0f9cdad4c3c8"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/authType","dspace:value":"Bearer"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/refreshToken","dspace:value":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaWQ6d2ViOnByb3ZpZGVyLWlkaHViOnVzZXI6cHJvdmlkZXIvc2luZ2xlQXNzZXRSZWFkT25seURhdGFBY2Nlc3NJc3N1ZXIiLCJzdWIiOiJkaWQ6d2ViOmNvbnN1bWVyLWlkaHViOnVzZXI6Y29uc3VtZXIiLCJleHAiOjE3ODY0NzA4NjgsImlhdCI6MTc4NjQ2OTA2OCwidG9rZW4iOiJleUpoYkdjaU9pSklVekkxTmlKOS5leUpwYzNNaU9pSmthV1E2ZDJWaU9uQnliM1pwWkdWeUxXbGthSFZpT25WelpYSTZjSEp2ZG1sa1pYSXZjMmx1WjJ4bFFYTnpaWFJTWldGa1QyNXNlVVJoZEdGQlkyTmxjM05KYzNOMVpYSWlMQ0psZUhBaU9qRTNPRFkwTmprek5qZ3NJbWxoZENJNk1UYzROalEyT1RBMk9Dd2laR0ZrSWpvaWFIUjBjRG92TDJSemNDMXVZWFJwZG1VdFltRnplWGc2T0RBNU1DOWtjM0F2WkdGMFlTMWhZMk5sYzNNdlpUTTRZVEJtT1RJdE5HVmxPQzAwTXpaakxXRTFNelV0TUdZNVkyUmhaRFJqTTJNNElpd2lZMmxrSWpvaU5qVTRaamN6TkdJdE16azROeTAwTXpVM0xUZzVaalV0WkRRMVlUbGxOV013WVdReEluMC5EeEV3dS1ocTJ3N0dpTjU4dDM4bmtQbVhJM0pUREpyc2NMTzg1RXNxemY0In0.VaqfnOrdEh7EJjyjAQ-oOuK0oFsoaT4Z7V5GBnA3oPs"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/expiresIn","dspace:value":"300"},{"@type":"dspace:EndpointProperty","dspace:name":"https://w3id.org/edc/v0.0.1/ns/refreshEndpoint","dspace:value":"http://dsp-native-basyx:8090/dsp/authorization/refresh"}]}}
+2026-08-11T17:24:38.955Z  WARN 1 --- [BasyxStarterApp] [pool-7-thread-9] .f.l.c.e.p.s.h.SendContractFinalizedTask : Error sending FINALIZED MESSAGE to http://consumer-controlplane:9020/dsp/negotiations/b825924c-18e8-4200-a17f-9464099c2cca/events for 258aa947-4894-47c6-bda1-1772324628d2
+2026-08-11T17:24:38.955Z  WARN 1 --- [BasyxStarterApp] [pool-7-thread-9] .f.l.c.e.p.s.h.SendContractFinalizedTask : Status code: 500 INTERNAL_SERVER_ERROR
+2026-08-11T17:24:41.065Z  WARN 1 --- [BasyxStarterApp] [pool-7-thread-9] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Error sending AGREED MESSAGE to http://consumer-controlplane:9020/dsp/negotiations/6d8695bb-2fcc-49d6-9a62-1266f735b92f/agreement for 43a4517e-108f-4156-96b3-2cb278b2b8b1
+2026-08-11T17:24:41.065Z  WARN 1 --- [BasyxStarterApp] [pool-7-thread-9] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Status code: 500 INTERNAL_SERVER_ERROR
+2026-08-11T17:24:41.066Z  WARN 1 --- [BasyxStarterApp] [pool-7-thread-9] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Response from consumer
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1"/>
+<title>Error 500 Internal Server Error</title>
+</head>
+<body>
+<h2>HTTP ERROR 500 Internal Server Error</h2>
+<table>
+<tr><th>URI:</th><td>http://consumer-controlplane:9020/dsp/negotiations/6d8695bb-2fcc-49d6-9a62-1266f735b92f/agreement</td></tr>
+<tr><th>STATUS:</th><td>500</td></tr>
+<tr><th>MESSAGE:</th><td>Internal Server Error</td></tr>
+</table>
+
+</body>
+</html>
+
+2026-08-11T17:24:41.066Z  WARN 1 --- [BasyxStarterApp] [pool-7-thread-9] o.f.l.c.e.p.s.h.SendContractAgreedTask   : As bytes: [60, 104, 116, 109, 108, 62, 10, 60, 104, 101, 97, 100, 62, 10, 60, 109, 101, 116, 97, 32, 104, 116, 116, 112, 45, 101, 113, 117, 105, 118, 61, 34, 67, 111, 110, 116, 101, 110, 116, 45, 84, 121, 112, 101, 34, 32, 99, 111, 110, 116, 101, 110, 116, 61, 34, 116, 101, 120, 116, 47, 104, 116, 109, 108, 59, 99, 104, 97, 114, 115, 101, 116, 61, 73, 83, 79, 45, 56, 56, 53, 57, 45, 49, 34, 47, 62, 10, 60, 116, 105, 116, 108, 101, 62, 69, 114, 114, 111, 114, 32, 53, 48, 48, 32, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 116, 105, 116, 108, 101, 62, 10, 60, 47, 104, 101, 97, 100, 62, 10, 60, 98, 111, 100, 121, 62, 10, 60, 104, 50, 62, 72, 84, 84, 80, 32, 69, 82, 82, 79, 82, 32, 53, 48, 48, 32, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 104, 50, 62, 10, 60, 116, 97, 98, 108, 101, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 85, 82, 73, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 104, 116, 116, 112, 58, 47, 47, 99, 111, 110, 115, 117, 109, 101, 114, 45, 99, 111, 110, 116, 114, 111, 108, 112, 108, 97, 110, 101, 58, 57, 48, 50, 48, 47, 100, 115, 112, 47, 110, 101, 103, 111, 116, 105, 97, 116, 105, 111, 110, 115, 47, 54, 100, 56, 54, 57, 53, 98, 98, 45, 50, 102, 99, 99, 45, 52, 57, 100, 54, 45, 57, 97, 54, 50, 45, 49, 50, 54, 54, 102, 55, 51, 53, 98, 57, 50, 102, 47, 97, 103, 114, 101, 101, 109, 101, 110, 116, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 83, 84, 65, 84, 85, 83, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 53, 48, 48, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 77, 69, 83, 83, 65, 71, 69, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 47, 116, 97, 98, 108, 101, 62, 10, 10, 60, 47, 98, 111, 100, 121, 62, 10, 60, 47, 104, 116, 109, 108, 62, 10]
+2026-08-11T17:24:41.067Z  WARN 1 --- [BasyxStarterApp] [pool-7-thread-9] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Body: 
+{
+    "@context": {
+        "@vocab": "https://w3id.org/edc/v0.0.1/ns/",
+        "edc": "https://w3id.org/edc/v0.0.1/ns/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "dct": "http://purl.org/dc/terms/",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "dspace": "https://w3id.org/dspace/v0.8/"
+    },
+    "@type": "dspace:ContractAgreementMessage",
+    "dspace:consumerPid": "6d8695bb-2fcc-49d6-9a62-1266f735b92f",
+    "dspace:providerPid": "43a4517e-108f-4156-96b3-2cb278b2b8b1",
+    "dspace:agreement": {
+        "@type": "odrl:Agreement",
+        "@id": "d4eb2efb-aff1-4c30-9821-a451dac67713",
+        "odrl:target": "e38a0f92-4ee8-436c-a535-0f9cdad4c3c8",
+        "dspace:timestamp": "2026-08-11T17:24:41Z",
+        "odrl:assignee": "did:web:consumer-idhub:user:consumer",
+        "odrl:assigner": "did:web:provider-idhub:user:provider"
+    },
+    "dspace:callbackAddress": "http://dsp-native-basyx:8090/dsp"
+}
+2026-08-11T17:24:45.329Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-16] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Error sending AGREED MESSAGE to http://consumer-controlplane:9020/dsp/negotiations/f1791448-3a29-4d6b-9fe8-78df76f93287/agreement for fe918753-2c42-47aa-aff9-4da617681811
+2026-08-11T17:24:45.329Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-16] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Status code: 500 INTERNAL_SERVER_ERROR
+2026-08-11T17:24:45.330Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-16] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Response from consumer
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1"/>
+<title>Error 500 Internal Server Error</title>
+</head>
+<body>
+<h2>HTTP ERROR 500 Internal Server Error</h2>
+<table>
+<tr><th>URI:</th><td>http://consumer-controlplane:9020/dsp/negotiations/f1791448-3a29-4d6b-9fe8-78df76f93287/agreement</td></tr>
+<tr><th>STATUS:</th><td>500</td></tr>
+<tr><th>MESSAGE:</th><td>Internal Server Error</td></tr>
+</table>
+
+</body>
+</html>
+
+2026-08-11T17:24:45.331Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-16] o.f.l.c.e.p.s.h.SendContractAgreedTask   : As bytes: [60, 104, 116, 109, 108, 62, 10, 60, 104, 101, 97, 100, 62, 10, 60, 109, 101, 116, 97, 32, 104, 116, 116, 112, 45, 101, 113, 117, 105, 118, 61, 34, 67, 111, 110, 116, 101, 110, 116, 45, 84, 121, 112, 101, 34, 32, 99, 111, 110, 116, 101, 110, 116, 61, 34, 116, 101, 120, 116, 47, 104, 116, 109, 108, 59, 99, 104, 97, 114, 115, 101, 116, 61, 73, 83, 79, 45, 56, 56, 53, 57, 45, 49, 34, 47, 62, 10, 60, 116, 105, 116, 108, 101, 62, 69, 114, 114, 111, 114, 32, 53, 48, 48, 32, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 116, 105, 116, 108, 101, 62, 10, 60, 47, 104, 101, 97, 100, 62, 10, 60, 98, 111, 100, 121, 62, 10, 60, 104, 50, 62, 72, 84, 84, 80, 32, 69, 82, 82, 79, 82, 32, 53, 48, 48, 32, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 104, 50, 62, 10, 60, 116, 97, 98, 108, 101, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 85, 82, 73, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 104, 116, 116, 112, 58, 47, 47, 99, 111, 110, 115, 117, 109, 101, 114, 45, 99, 111, 110, 116, 114, 111, 108, 112, 108, 97, 110, 101, 58, 57, 48, 50, 48, 47, 100, 115, 112, 47, 110, 101, 103, 111, 116, 105, 97, 116, 105, 111, 110, 115, 47, 102, 49, 55, 57, 49, 52, 52, 56, 45, 51, 97, 50, 57, 45, 52, 100, 54, 98, 45, 57, 102, 101, 56, 45, 55, 56, 100, 102, 55, 54, 102, 57, 51, 50, 56, 55, 47, 97, 103, 114, 101, 101, 109, 101, 110, 116, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 83, 84, 65, 84, 85, 83, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 53, 48, 48, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 116, 114, 62, 60, 116, 104, 62, 77, 69, 83, 83, 65, 71, 69, 58, 60, 47, 116, 104, 62, 60, 116, 100, 62, 73, 110, 116, 101, 114, 110, 97, 108, 32, 83, 101, 114, 118, 101, 114, 32, 69, 114, 114, 111, 114, 60, 47, 116, 100, 62, 60, 47, 116, 114, 62, 10, 60, 47, 116, 97, 98, 108, 101, 62, 10, 10, 60, 47, 98, 111, 100, 121, 62, 10, 60, 47, 104, 116, 109, 108, 62, 10]
+2026-08-11T17:24:45.331Z  WARN 1 --- [BasyxStarterApp] [ool-7-thread-16] o.f.l.c.e.p.s.h.SendContractAgreedTask   : Body: 
+{
+    "@context": {
+        "@vocab": "https://w3id.org/edc/v0.0.1/ns/",
+        "edc": "https://w3id.org/edc/v0.0.1/ns/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "dct": "http://purl.org/dc/terms/",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "dspace": "https://w3id.org/dspace/v0.8/"
+    },
+    "@type": "dspace:ContractAgreementMessage",
+    "dspace:consumerPid": "f1791448-3a29-4d6b-9fe8-78df76f93287",
+    "dspace:providerPid": "fe918753-2c42-47aa-aff9-4da617681811",
+    "dspace:agreement": {
+        "@type": "odrl:Agreement",
+        "@id": "9fcc569f-f873-49ee-a194-e7f46c29c389",
+        "odrl:target": "e38a0f92-4ee8-436c-a535-0f9cdad4c3c8",
+        "dspace:timestamp": "2026-08-11T17:24:45Z",
+        "odrl:assignee": "did:web:consumer-idhub:user:consumer",
+        "odrl:assigner": "did:web:provider-idhub:user:provider"
+    },
+    "dspace:callbackAddress": "http://dsp-native-basyx:8090/dsp"
+}

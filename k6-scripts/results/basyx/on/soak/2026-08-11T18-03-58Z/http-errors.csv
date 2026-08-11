@@ -1,0 +1,9 @@
+series,timestamp,value
+"consumer-controlplane",1786471519,"1.5818181818181816"
+"consumer-controlplane",1786471524,"1.418233390305102"
+"consumer-controlplane",1786471529,"1.2363861161112022"
+"consumer-controlplane",1786471534,"1.05456462844779"
+"dsp-native-basyx",1786471519,"0"
+"dsp-native-basyx",1786471524,"0"
+"dsp-native-basyx",1786471529,"0"
+"dsp-native-basyx",1786471534,"0"

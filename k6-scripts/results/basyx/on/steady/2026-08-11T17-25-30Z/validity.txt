@@ -1,0 +1,1 @@
+VALIDITY  ok=287  failed=13  failed_rate=4%  dropped_iterations=0

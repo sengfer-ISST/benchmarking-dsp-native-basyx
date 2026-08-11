@@ -1,0 +1,86 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /home/rohitj/edc/benchmarking-dsp-native-basyx/k6-scripts/scenarios/smoke.js
+        output: Prometheus remote write (http://localhost:9090/api/v1/write)
+
+     scenarios: (100.00%) 1 scenario, 1 max VUs, 5m30s max duration (incl. graceful stop):
+              * smoke: 5 iterations for each of 1 VUs (maxDuration: 5m0s, gracefulStop: 30s)
+
+
+running (0m01.0s), 1/1 VUs, 0 complete and 0 interrupted iterations
+smoke   [   0% ] 1 VUs  0m00.8s/5m0s  0/5 iters, 5 per VU
+
+running (0m02.0s), 1/1 VUs, 0 complete and 0 interrupted iterations
+smoke   [   0% ] 1 VUs  0m01.8s/5m0s  0/5 iters, 5 per VU
+
+running (0m03.0s), 1/1 VUs, 0 complete and 0 interrupted iterations
+smoke   [   0% ] 1 VUs  0m02.8s/5m0s  0/5 iters, 5 per VU
+
+running (0m04.0s), 1/1 VUs, 1 complete and 0 interrupted iterations
+smoke   [  20% ] 1 VUs  0m03.8s/5m0s  1/5 iters, 5 per VU
+
+running (0m05.0s), 1/1 VUs, 1 complete and 0 interrupted iterations
+smoke   [  20% ] 1 VUs  0m04.8s/5m0s  1/5 iters, 5 per VU
+
+running (0m06.0s), 1/1 VUs, 1 complete and 0 interrupted iterations
+smoke   [  20% ] 1 VUs  0m05.8s/5m0s  1/5 iters, 5 per VU
+
+running (0m07.0s), 1/1 VUs, 2 complete and 0 interrupted iterations
+smoke   [  40% ] 1 VUs  0m06.8s/5m0s  2/5 iters, 5 per VU
+
+running (0m08.0s), 1/1 VUs, 2 complete and 0 interrupted iterations
+smoke   [  40% ] 1 VUs  0m07.8s/5m0s  2/5 iters, 5 per VU
+
+running (0m09.0s), 1/1 VUs, 3 complete and 0 interrupted iterations
+smoke   [  60% ] 1 VUs  0m08.8s/5m0s  3/5 iters, 5 per VU
+
+running (0m10.0s), 1/1 VUs, 3 complete and 0 interrupted iterations
+smoke   [  60% ] 1 VUs  0m09.8s/5m0s  3/5 iters, 5 per VU
+
+running (0m11.0s), 1/1 VUs, 3 complete and 0 interrupted iterations
+smoke   [  60% ] 1 VUs  0m10.8s/5m0s  3/5 iters, 5 per VU
+
+running (0m12.0s), 1/1 VUs, 4 complete and 0 interrupted iterations
+smoke   [  80% ] 1 VUs  0m11.8s/5m0s  4/5 iters, 5 per VU
+
+running (0m13.0s), 1/1 VUs, 4 complete and 0 interrupted iterations
+smoke   [  80% ] 1 VUs  0m12.8s/5m0s  4/5 iters, 5 per VU
+
+running (0m14.0s), 1/1 VUs, 4 complete and 0 interrupted iterations
+smoke   [  80% ] 1 VUs  0m13.8s/5m0s  4/5 iters, 5 per VU
+
+================ DSP benchmark summary ================
+-- per-phase latency --
+  catalog                    p50=86.9 ms  p95=91.5 ms  p99=91.7 ms  max=91.7 ms  n=5
+  negotiation init (POST)    p50=8.3 ms  p95=8.5 ms  p99=8.5 ms  max=8.5 ms  n=5
+  time-to-AGREED (async)     p50=2297.0 ms  p95=2300.8 ms  p99=2301.0 ms  max=2301.0 ms  n=5
+  transfer init (POST)       p50=8.4 ms  p95=10.6 ms  p99=11.0 ms  max=11.0 ms  n=5
+  time-to-EDR (async)        p50=771.0 ms  p95=774.6 ms  p99=774.9 ms  max=775.0 ms  n=5
+  data pull                  p50=8.6 ms  p95=8.9 ms  p99=9.0 ms  max=9.0 ms  n=5
+-- end-to-end + throughput --
+  e2e transaction            p50=2932.0 ms  p95=3137.6 ms  p99=3177.1 ms  max=3187.0 ms  n=5
+  data throughput (MB/s)     p50=0.0  p95=0.0  p99=0.0  max=0.0  n=5
+-- outcomes --
+  transactions succeeded     count=5  rate=0.348/s
+  transactions failed        (no data)
+  failed rate                rate=0.00%  (pass=0 fail=5)
+    of which TERMINATED      (no data)
+    of which TIMED OUT       (no data)
+    of which HTTP-FAILED     (no data)
+  failure accounting       (no failures)
+-- observer effect (poll load) --
+  negotiation polls          count=45  rate=3.136/s
+  edr polls                  count=18  rate=1.254/s
+  polls per transaction     negotiation=9.0  edr=3.6  (timeout ceiling=120)
+=======================================================
+(full summary -> /home/rohitj/edc/benchmarking-dsp-native-basyx/k6-scripts/results/basyx/on/smoke/2026-08-11T17-08-06Z/k6-summary.json; POLL_INTERVAL_MS=250; IDENTITY_MODE=on)
+
+running (0m14.3s), 0/1 VUs, 5 complete and 0 interrupted iterations
+smoke ✓ [ 100% ] 1 VUs  0m14.1s/5m0s  5/5 iters, 5 per VU

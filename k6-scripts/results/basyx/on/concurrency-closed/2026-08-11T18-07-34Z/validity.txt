@@ -1,0 +1,1 @@
+VALIDITY  ok=991  failed=299  failed_rate=23%  dropped_iterations=0  <-- >5% FAILURES: past the knee, not a valid operating point

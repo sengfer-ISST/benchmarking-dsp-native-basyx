@@ -1,0 +1,3 @@
+17:04:41 | === campaign: basyx / identity-on ===
+ERROR: canonical dir not found: /home/rohitj/edc/benchmarking-dsp-native-basyx/k6-script
+17:04:41 | PREFLIGHT FAIL: harness parity check failed vs /home/rohitj/edc/benchmarking-dsp-native-basyx/k6-script
