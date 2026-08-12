@@ -13,8 +13,10 @@ export const options = Object.assign({}, baseOptions, {
   scenarios: {
     soak: {
       executor: 'constant-arrival-rate',
-      rate: Number(__ENV.RATE || 0.5),
-      timeUnit: '1s',
+      // 1 per 2s, NOT 0.5 per 1s — k6's `rate` is an int64 and a fractional value is
+      // rejected while parsing options, before the script runs. Mirrors ../scenarios/soak.js.
+      rate: Number(__ENV.RATE || 1),
+      timeUnit: __ENV.TIME_UNIT || '2s',
       duration: __ENV.DURATION || '30m',
       preAllocatedVUs: Number(__ENV.PREALLOCATED_VUS || 50),
       maxVUs: Number(__ENV.MAX_VUS || 200),
