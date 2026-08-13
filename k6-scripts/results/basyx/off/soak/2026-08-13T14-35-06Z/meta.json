@@ -1,0 +1,43 @@
+{
+  "connector": "basyx",
+  "scenario": "soak",
+  "scenario_dir": "basyx-off",
+  "run_id": "2026-08-13T14-35-06Z",
+  "poll_interval_ms": 250,
+  "poll_timeout_ms": 30000,
+  "identity_mode": "off",
+  "catalog_size": 1,
+  "start_epoch": 1786631791,
+  "end_epoch": 1786633607,
+  "warmup": {
+    "duration": "60s",
+    "rate": 1,
+    "skipped": false
+  },
+  "prometheus": {
+    "url": "http://localhost:9090",
+    "rate_window": "1m",
+    "remote_write": "http://localhost:9090/api/v1/write"
+  },
+  "k6": {
+    "version": "k6 v2.2.0 (commit/00a9a1b7f5, go1.26.5, linux/amd64)",
+    "exit_code": 0
+  },
+  "git_sha": "adee26e",
+  "git_dirty": true,
+  "harness_hash": "37bb5a5a150493d94d2140a44654f3d8",
+  "stack_started_at": "2026-08-13T14:32:53.426388233Z",
+  "env": {
+    "RATE": null,
+    "DURATION": null,
+    "MAX_VUS": null,
+    "PREALLOCATED_VUS": null,
+    "VUS": null,
+    "STAGE_DURATION": null,
+    "RATES": null,
+    "VU_STAGES": null,
+    "PAYLOAD_SIZE": null,
+    "PAYLOAD_BYTES": null,
+    "PAYLOAD_URL": null
+  }
+}
